@@ -1,9 +1,10 @@
 import React from 'react'
 import type { NextPage } from 'next'
+import SignInMain from '../components/signin/SignInMain'
 
 const signup: NextPage = () => {
   return (
-    <div>signup</div>
+    <SignInMain></SignInMain>
   )
 }
 
