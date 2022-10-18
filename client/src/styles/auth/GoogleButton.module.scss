@@ -1,0 +1,18 @@
+.container {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  margin-top: 14px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: white;
+  color: black;
+  .icon{
+    margin-right: 10px;
+    display: flex;
+  }
+}

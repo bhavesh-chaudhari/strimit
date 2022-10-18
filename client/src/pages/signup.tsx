@@ -1,10 +1,10 @@
 import React from 'react'
 import type { NextPage } from 'next'
-import SignInMain from '../components/signin/SignInMain'
+import AuthMain from '../components/auth/AuthMain'
 
 const signup: NextPage = () => {
   return (
-    <SignInMain></SignInMain>
+    <AuthMain isSignUp={true}></AuthMain>
   )
 }
 

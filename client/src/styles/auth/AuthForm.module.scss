@@ -1,0 +1,57 @@
+.container {
+  width: 100%;
+    z-index: 1;
+    position: relative;
+  .content {
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      & > button {
+        background: $blue-500;
+        color: white;
+        border: none;
+        padding: 12px;
+        font-size: 1rem;
+        margin-top: 14px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .separator {
+        position: relative;
+        text-align: center;
+        margin-top: 14px;
+        font-size: 14px;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 42%;
+          top: 50%;
+          left: 0;
+          font-size: 14px;
+          background: rgb(109, 108, 108);
+          height: 1px;
+          transform: translate(0, -50%);
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          width: 42%;
+          top: 50%;
+          right: 0;
+          font-size: 14px;
+          background: rgb(109, 108, 108);
+          height: 1px;
+          transform: translate(0, -50%);
+        }
+      }
+      .notice {
+        text-align: center;
+        margin-top: 8px;
+        a {
+          color: $blue-300;
+        }
+      }
+    }
+  }
+}

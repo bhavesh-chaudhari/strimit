@@ -6,7 +6,7 @@
   color: white;
   height: 65px;
   width: 100%;
-  background: #1c1c1c;
+  background: $theme-black;
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -22,6 +22,7 @@
     }
     .nav-links {
       display: flex;
+      z-index: 1000;
       ul {
         display: flex;
         justify-content: center;

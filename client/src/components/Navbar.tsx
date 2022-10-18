@@ -27,8 +27,8 @@ const Navbar = (): JSX.Element => {
       },
       {
         id: 4,
-        path: "/signin",
-        name: "Sign In",
+        path: "/signup",
+        name: "Sign Up",
       },
     ];
 

@@ -3,7 +3,7 @@ import * as authController from "../controllers/auth"
 
 const router = express.Router()
 
-// @route   Get /signup
+// @route   POST /signup
 // @desc    Signup User
 // @access  Public
 router.post("/signup", authController.signup)
