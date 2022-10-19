@@ -4,23 +4,32 @@ import styles from "../../styles/auth/GoogleButton.module.scss"
 import {FcGoogle} from "react-icons/fc"
 import { API_BASE_URL } from '../../config/baseUrl';
 import axios from 'axios';
+import {toast} from "react-toastify"
+import { addUserToLocalStorage } from '../../utils/localStorage';
 
 const GoogleButton = () => {
 
    const googleLogin = useGoogleLogin({
      onSuccess: async ({ code }) => {
-       const tokens = await axios.post(`${API_BASE_URL}/auth/google`, {
+       const {data, status} = await axios.post(`${API_BASE_URL}/auth/google`, {
          code,
        });
 
-       console.log(tokens);
+       console.log(data);
+       if(status === 200){
+        addUserToLocalStorage(data)
+         toast("Signed In", {
+           type: "success",
+           position: "bottom-right",
+           theme: "dark",
+         });
+       }
      },
      flow: "auth-code",
-     hosted_domain: "iiitn.ac.in",
    });
   
   return (
-      <button className={styles["container"]}  onClick={googleLogin} >
+      <button type="button" className={styles["container"]}  onClick={googleLogin} >
         <span className={styles["icon"]}  >
           <FcGoogle size={22} ></FcGoogle>
         </span>

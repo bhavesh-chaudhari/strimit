@@ -3,6 +3,9 @@ import { StatusCodes } from "http-status-codes";
 import { prisma } from "../utils/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import jwtDecode from "jwt-decode";
+import { oAuth2Client } from "../utils/oauthClient";
+import { UserRefreshClient } from "google-auth-library";
 
 const User = prisma.user;
 
@@ -50,6 +53,8 @@ export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
 
+    console.log(req.body);
+
     if (!email || !password) {
       return res
         .status(401)
@@ -86,6 +91,53 @@ export const login = async (req: Request, res: Response) => {
 
     res.status(200).json({ ...user, token });
   } catch (error) {
-    res.status(StatusCodes.BAD_REQUEST).json(error);
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
   }
+};
+
+export const googleLogin = async (req: Request, res: Response) => {
+  try {
+    const { tokens } = await oAuth2Client.getToken(req.body.code); // exchange code for tokens
+    console.log(tokens);
+
+    const user = jwtDecode((tokens as any).id_token) as any;
+
+    console.log(user);
+
+    const alreadyRegisteredUser = await User.findUnique({
+      where: {
+        email: user.email,
+      },
+    });
+
+    if (alreadyRegisteredUser) {
+      return res.status(200).json({
+        token: tokens.access_token,
+        email: alreadyRegisteredUser.email,
+        id: alreadyRegisteredUser.id,
+      });
+    }
+
+    const newUser = await User.create({
+      data: {
+        email: user.email,
+      },
+    });
+
+    return res
+      .status(200)
+      .json({
+        token: tokens.access_token,
+        email: newUser.email,
+        id: newUser.id,
+      });
+  } catch (error) {
+    console.log(error);
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+  }
+};
+
+export const refreshToken = (req: Request, res: Response) => {
+  try {
+  } catch (error) {}
 };
