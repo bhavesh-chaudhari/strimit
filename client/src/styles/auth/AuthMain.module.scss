@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   min-height: calc(100vh - 65px - 30px);
-  padding-top: 3rem;
+  padding-top: 2.5rem;
   position: relative;
   z-index: 1;
   .content {
@@ -13,7 +13,7 @@
     width: 90%;
     max-width: 1200px;
     .heading {
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
     .form {
       position: relative;

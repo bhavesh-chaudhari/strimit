@@ -21,6 +21,9 @@ const PrivateRoute = ({ protectedRoutes, children }: Props) => {
         await router.replace("/signup");
         setIsLoading(false);
       }
+      else{
+        setIsLoading(false)
+      }
     }
     protect()
   }, []);

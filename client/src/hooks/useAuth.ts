@@ -25,7 +25,7 @@ export const useLogin = () => {
       console.log(data);
       if (data.status === 200) {
         addUserToLocalStorage(data.data);
-        router.replace("/");
+        router.replace("/streamer-form");
         toast("Logged In", {
           type: "success",
           position: "bottom-right",
@@ -44,11 +44,14 @@ export const useSignup = () => {
       console.log(data);
       if (data.status === 200) {
         addUserToLocalStorage(data.data);
-        router.replace("/");
+        router.replace("/streamer-form");
          toast("Signed Up Successfully", {
            type: "success",
-           position: "bottom-right",
+           position: "top-right",
            theme: "dark",
+           style: {
+            marginTop: "5rem"
+           }
          });
       }
     },

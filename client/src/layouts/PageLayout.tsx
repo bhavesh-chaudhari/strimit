@@ -15,9 +15,9 @@ const PageLayout = ({ children }: Props): JSX.Element => {
 
   const currentPagePath = router.pathname 
   
-  const noFooterPages = ["/signup", "/login"]
+  const noFooterPages = ["/signup", "/login", "/streamer-form"]
 
-  const protectedRoutes = ["/dashboard"]
+  const protectedRoutes = ["/dashboard", "/streamer-form"];
   
   return (
     <PrivateRoute protectedRoutes={protectedRoutes}>
