@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import CopyrightNotice from "../components/CopyrightNotice"
 import {useRouter} from "next/router"
 import PrivateRoute from "../components/PrivateRoute"
+import styles from "../styles/Layout.module.scss"
 
 interface Props {
   children?: React.ReactNode;
@@ -24,7 +25,7 @@ const PageLayout = ({ children }: Props): JSX.Element => {
       <>
         {" "}
         <Navbar></Navbar>
-        {children}
+        <div className={styles["layout"]}>{children}</div>
         {noFooterPages.includes(currentPagePath) ? null : <Footer></Footer>}
         <CopyrightNotice></CopyrightNotice>
       </>
