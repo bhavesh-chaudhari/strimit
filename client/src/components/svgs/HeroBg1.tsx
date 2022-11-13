@@ -5,7 +5,6 @@ const SvgHeroBg1 = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 800 800"
     role="img"
-    preserveAspectRatio="none"
     {...props}
   >
     <defs>

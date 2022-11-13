@@ -8,6 +8,8 @@ body, html{
   background: $theme-black;
   color: white;
   font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -23,3 +25,7 @@ a {
   top: 0;
   left: 0;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

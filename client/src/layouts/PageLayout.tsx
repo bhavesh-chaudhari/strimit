@@ -26,7 +26,7 @@ const PageLayout = ({ children }: Props): JSX.Element => {
         {" "}
         <Navbar></Navbar>
         <div className={styles["layout"]}>{children}</div>
-        {noFooterPages.includes(currentPagePath) ? null : <Footer></Footer>}
+        {/* {noFooterPages.includes(currentPagePath) ? null : <Footer></Footer>} */}
         <CopyrightNotice></CopyrightNotice>
       </>
     </PrivateRoute>

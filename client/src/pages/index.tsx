@@ -8,10 +8,11 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
+        <title>Live - The way of advertising for live streams.</title>
       </Head>
       <Hero></Hero>
       <HowItWorksMain></HowItWorksMain>
-      <Faq></Faq>
+      {/* <Faq></Faq> */}
     </>
   )
 }

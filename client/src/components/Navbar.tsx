@@ -50,7 +50,7 @@ const Navbar = (): JSX.Element => {
         <div className={styles["nav-logo"]}>
           <Link href="/" passHref>
             <a>
-              <h2>Live</h2>
+              <h2 className="text-lg font-bold" >Live</h2>
             </a>
           </Link>
         </div>
