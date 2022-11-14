@@ -49,7 +49,9 @@ const CalculatorInput = ({
 
     const currentName = calculatorValues[name as keyof typeof calculatorValues];
 
-    if (value === "" || re.test(value)) {
+    const isZeroAtStart = String(value).charAt(0) === "0"
+
+    if ((value === "" || re.test(value)) && (String(value).length <= 12) && !isZeroAtStart) {
       setCalculatorValues({
         ...calculatorValues,
         [name]: { ...currentName, value, isValid: true },
@@ -293,7 +295,7 @@ const CalculatorMain = () => {
               }
             </span>
             <div className="flex w-full justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center">
-              <span className="bg-clip-text text-center font-bold text-3xl text-transparent bg-gradient-to-l from-pink-500 to-blue-500">
+              <span className="bg-clip-text text-center font-bold text-3xl text-transparent text-green-500">
                 {result ? `Rs. ${result.toLocaleString()}` : <span className="text-lg text-blue-500">Please set Values</span>}
               </span>
             </div>
