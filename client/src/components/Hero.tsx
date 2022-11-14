@@ -12,7 +12,7 @@ const Hero = (): JSX.Element => {
             Live
           </h1>
           <h2 className="text-center mb-6 text-3xl">
-            The way of advertising for live streams.
+            The right way of advertising for live streams.
           </h2>
           <div className="flex gap-2 text-6xl">
             <div className="flex gap-2">
@@ -40,7 +40,7 @@ const Hero = (): JSX.Element => {
               Signup Now
             </a>
           </Link>
-          <Link href={"/signup"} passHref>
+          <Link href={"/calculator"} passHref>
             <a className="bg-white text-black border-2 border-blue-400 py-2 px-6 text-lg rounded-md">
               Calculate
             </a>
