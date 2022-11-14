@@ -6,9 +6,12 @@ import { API_BASE_URL } from '../../config/baseUrl';
 import axios from 'axios';
 import {toast} from "react-toastify"
 import { addUserToLocalStorage } from '../../utils/localStorage';
+import { useRouter } from 'next/router';
 
 const GoogleButton = () => {
 
+  const router = useRouter()
+  
    const googleLogin = useGoogleLogin({
      onSuccess: async ({ code }) => {
        const {data, status} = await axios.post(`${API_BASE_URL}/auth/google`, {
@@ -18,6 +21,7 @@ const GoogleButton = () => {
        console.log(data);
        if(status === 200){
         addUserToLocalStorage(data)
+        await router.replace("/streamer-form");
          toast("Signed In", {
            type: "success",
            position: "bottom-right",

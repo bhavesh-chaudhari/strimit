@@ -2,6 +2,37 @@
   width: 100%;
     z-index: 1;
     position: relative;
+    .tabs-container{
+      gap: 10px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      .tabs{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3px;
+      overflow: hidden;
+      & > div:nth-of-type(1){
+        border-right: 1px solid rgba($color: silver, $alpha: 0.5);
+      }
+      .tab{
+        background: rgba($color: $blue-500, $alpha: 0.5);
+        cursor: pointer;
+        padding: 8px;
+        color: white;
+        width: 50%;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+      .active{
+        background: $blue-600;
+        transition: all 0.3s ease;
+        opacity: 1;
+      }
+    }
+    }
   .content {
     .form {
       display: flex;

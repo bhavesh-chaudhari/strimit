@@ -1,8 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { request } from "../utils/axios";
-import { addUserToLocalStorage } from "../utils/localStorage";
+import {
+  addUserToLocalStorage,
+  removeUserFromLocalStorage,
+} from "../utils/localStorage";
 import { useRouter } from "next/router";
-import {toast} from "react-toastify"
+import { toast } from "react-toastify";
 
 interface FormValues {
   email: string;
@@ -25,12 +28,12 @@ export const useLogin = () => {
       console.log(data);
       if (data.status === 200) {
         addUserToLocalStorage(data.data);
-        router.replace("/");
+        router.replace("/streamer-form");
         toast("Logged In", {
           type: "success",
           position: "bottom-right",
-          theme: "dark"
-        })
+          theme: "dark",
+        });
       }
     },
   });
@@ -44,13 +47,28 @@ export const useSignup = () => {
       console.log(data);
       if (data.status === 200) {
         addUserToLocalStorage(data.data);
-        router.replace("/");
-         toast("Signed Up Successfully", {
-           type: "success",
-           position: "bottom-right",
-           theme: "dark",
-         });
+        router.replace("/streamer-form");
+        toast("Signed Up Successfully", {
+          type: "success",
+          position: "top-right",
+          theme: "dark",
+          style: {
+            marginTop: "5rem",
+          },
+        });
       }
+    },
+  });
+};
+
+export const logout = () => {
+  removeUserFromLocalStorage();
+  toast("Logged Out Successfully", {
+    type: "success",
+    position: "bottom-right",
+    theme: "dark",
+    style: {
+      marginTop: "5rem",
     },
   });
 };

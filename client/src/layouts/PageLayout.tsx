@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import CopyrightNotice from "../components/CopyrightNotice"
 import {useRouter} from "next/router"
 import PrivateRoute from "../components/PrivateRoute"
+import styles from "../styles/Layout.module.scss"
 
 interface Props {
   children?: React.ReactNode;
@@ -15,17 +16,17 @@ const PageLayout = ({ children }: Props): JSX.Element => {
 
   const currentPagePath = router.pathname 
   
-  const noFooterPages = ["/signup", "/login"]
+  const noFooterPages = ["/signup", "/login", "/streamer-form"]
 
-  const protectedRoutes = ["/dashboard"]
+  const protectedRoutes = ["/dashboard", "/streamer-form"];
   
   return (
     <PrivateRoute protectedRoutes={protectedRoutes}>
       <>
         {" "}
         <Navbar></Navbar>
-        {children}
-        {noFooterPages.includes(currentPagePath) ? null : <Footer></Footer>}
+        <div className={styles["layout"]}>{children}</div>
+        {/* {noFooterPages.includes(currentPagePath) ? null : <Footer></Footer>} */}
         <CopyrightNotice></CopyrightNotice>
       </>
     </PrivateRoute>

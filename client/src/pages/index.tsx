@@ -1,12 +1,19 @@
 import Head from 'next/head'
 import type { NextPage } from 'next'
+import Hero from '../components/Hero'
+import HowItWorksMain from '../components/howItWorks/HowItWorksMain'
+import Faq from '../components/Faq'
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <>
       <Head>
+        <title>Live - The way of advertising for live streams.</title>
       </Head>
-    </div>
+      <Hero></Hero>
+      <HowItWorksMain></HowItWorksMain>
+      {/* <Faq></Faq> */}
+    </>
   )
 }
 

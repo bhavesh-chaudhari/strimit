@@ -1,12 +1,11 @@
 import React from 'react'
-import styles from "../styles/CopyrightNotice.module.scss"
 
 const CopyrightNotice = () => {
 
     const date = new Date()
     
   return (
-    <div className={styles["container"]}>
+    <div className="bg-theme-black h-10 flex items-center justify-center text-center">
       <p>Copyright © {date.getFullYear()} Live</p>
     </div>
   );

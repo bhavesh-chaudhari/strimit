@@ -17,7 +17,7 @@ export const signup = async (req: Request, res: Response) => {
   try {
     const user = await User.findUnique({
       where: {
-        email: req.body.email,
+        email: req.body.email
       },
     });
 

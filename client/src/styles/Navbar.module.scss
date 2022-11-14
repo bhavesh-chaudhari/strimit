@@ -11,8 +11,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
-    max-width: 1200px;
+    width: 88%;
+    // max-width: 1200px;
     .nav-logo {
       display: flex;
       justify-content: center;
@@ -31,15 +31,25 @@
         gap: 3rem;
         li {
           font-size: 1rem;
+          button{
+            background: inherit;
+            border: none;
+            font-size: inherit;
+            cursor: pointer;
+          }
         }
       }
-      a {
+      .link {
         text-decoration: none;
         color: $gray-200;
         position: relative;
+        transition: all 0.2s ease;
+        &:hover{
+          color: $gray-400;
+        }
       }
     }
-    .active a {
+    .active .link{
       position: relative;
       color: $blue-300;
     }
