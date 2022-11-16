@@ -6,7 +6,7 @@ const CopyrightNotice = () => {
     
   return (
     <div className="bg-theme-black h-10 flex items-center justify-center text-center">
-      <p>Copyright © {date.getFullYear()} Live</p>
+      <p>Copyright © {date.getFullYear()} LIVE</p>
     </div>
   );
 }

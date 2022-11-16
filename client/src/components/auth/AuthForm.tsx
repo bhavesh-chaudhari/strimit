@@ -10,7 +10,7 @@ import { ScaleLoader } from "react-spinners";
 const initialFormValues = {
   email: "",
   password: "",
-  type: "",
+  type: "streamer",
 };
 
 interface FormValues {
@@ -35,7 +35,7 @@ const Fields = ({
 
   return (
     <>
-      <div className={formStyles["field"]}>
+      <div className="w-full flex flex-col gap-2">
         <label htmlFor="email">Email</label>
         <input
           onChange={handleChange}
@@ -43,9 +43,10 @@ const Fields = ({
           id="email"
           type="email"
           required
+          className="w-full text-white bg-gray-800 p-2 z-10 rounded-sm transition-all duration-300 border border-gray-500 outline-none focus:border-gray-300"
         />
       </div>
-      <div className={formStyles["field"]}>
+      <div className="w-full flex flex-col gap-2">
         <label htmlFor="password">Password</label>
         <input
           onChange={handleChange}
@@ -53,6 +54,7 @@ const Fields = ({
           id="password"
           type="password"
           required
+          className="w-full text-white bg-gray-800 p-2 z-10 rounded-sm transition-all duration-300 border border-gray-500 outline-none focus:border-gray-300"
         />
       </div>
     </>
@@ -150,7 +152,7 @@ const AuthForm = ({ isSignUp }: { isSignUp: boolean }) => {
             <p>OR</p>
           </div>
           <div className={styles["google-btn"]}>
-            <GoogleButton></GoogleButton>
+            <GoogleButton isSignUp={isSignUp} formValues={formValues}></GoogleButton>
           </div>
           <div className={styles["notice"]}>
             <p>

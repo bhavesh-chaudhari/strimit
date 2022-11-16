@@ -3,7 +3,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "../styles/Navbar.module.scss";
 import { getUserFromLocalStorage } from "../utils/localStorage";
-import { logout} from "../hooks/useAuth";
+import { logout } from "../hooks/useAuth";
+import Image from "next/image";
 
 const Navbar = (): JSX.Element => {
   const [show, setShow] = useState<boolean>(false);
@@ -16,6 +17,26 @@ const Navbar = (): JSX.Element => {
     setUser(loggedInUser);
   }, [user]);
 
+  useEffect(()=>{
+
+    const resize = ()=>{
+      if (show && window.innerWidth < 768) {
+        document.body.style.overflowY = "hidden";
+      } else {
+        document.body.style.overflowY = "auto";
+      }
+    }
+
+    window.addEventListener("resize", resize)
+
+    resize()
+
+    return ()=>{
+      window.removeEventListener("resize", resize)
+    }
+
+  }, [show])
+
   const links = [
     {
       id: 1,
@@ -24,8 +45,8 @@ const Navbar = (): JSX.Element => {
     },
     {
       id: 2,
-      path: "/about-us",
-      name: "About Us",
+      path: "/about",
+      name: "About",
     },
     {
       id: 3,
@@ -39,19 +60,23 @@ const Navbar = (): JSX.Element => {
     },
   ];
 
-  const logoutUser = ()=>{
-    logout()
-    router.replace("/")
-  }
+  const logoutUser = () => {
+    logout();
+    router.replace("/");
+  };
 
   return (
     <div className={styles["navbar-container"]}>
       <nav className={styles["navbar"]}>
-        <div className={styles["nav-logo"]}>
-          <Link href="/" passHref>
-            <a>
-              <h2 className="text-lg font-bold" >Live</h2>
-            </a>
+        <div className="mb-0 cursor-pointer w-[80px] md:w-[55px] h-[18px] relative flex -translate-x-3 md:transform-none items-center">
+          <Link href="/">
+            <div>
+              <Image
+                src={"/logos/live.svg"}
+                layout={"fill"}
+                alt={"Livestream.ads Logo"}
+              />
+            </div>
           </Link>
         </div>
         <div
@@ -84,20 +109,19 @@ const Navbar = (): JSX.Element => {
                     router.pathname === link.path ? styles["active"] : ""
                   }
                 >
-                 {
-                  link.path === "" ? <button onClick={logoutUser} className={styles["link"]}>{link.name}</button> :  <Link scroll={true} href={link.path} passHref>
-                    <a className={styles["link"]} >{link.name}</a>
-                  </Link>
-                 }
+                  {link.path === "" ? (
+                    <button onClick={logoutUser} className={styles["link"]}>
+                      {link.name}
+                    </button>
+                  ) : (
+                    <Link scroll={true} href={link.path} passHref>
+                      <a className={styles["link"]}>{link.name}</a>
+                    </Link>
+                  )}
                 </li>
               );
             })}
           </ul>
-          <div className={styles["mobile-menu-logo"]}>
-            <div className={styles["mobile-menu-logo-content"]}>
-              <p>Live</p>
-            </div>
-          </div>
         </div>
       </nav>
     </div>
