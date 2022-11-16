@@ -1,9 +1,10 @@
 import React from 'react'
 import type { NextPage } from 'next'
+import AboutMain from '../components/AboutMain'
 
 const about: NextPage = () => {
   return (
-    <div>about</div>
+      <AboutMain></AboutMain>
   )
 }
 

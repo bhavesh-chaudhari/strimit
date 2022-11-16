@@ -8,7 +8,7 @@ import {toast} from "react-toastify"
 import { addUserToLocalStorage } from '../../utils/localStorage';
 import { useRouter } from 'next/router';
 
-const GoogleButton = () => {
+const GoogleButton = ({formValues, isSignUp}: any) => {
 
   const router = useRouter()
   
@@ -32,8 +32,10 @@ const GoogleButton = () => {
      flow: "auth-code",
    });
   
+   console.log(formValues)
+   
   return (
-      <button type="button" className={styles["container"]}  onClick={googleLogin} >
+      <button disabled={(isSignUp && !formValues?.type) ? true: false} type="button" className={styles["container"]}  onClick={googleLogin} >
         <span className={styles["icon"]}  >
           <FcGoogle size={22} ></FcGoogle>
         </span>

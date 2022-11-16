@@ -9,11 +9,13 @@ const AuthMain = ({isSignUp}: {isSignUp: boolean}) => {
     <div>
       <div className={styles["container"]}>
         <div className={styles["content"]}>
-          <div className={styles["heading"]}>
-            <h1>{isSignUp ? "Sign Up" : "Login"} To Live</h1>
+          <div className="">
+            <h1 className="text-2xl font-bold md:text-3xl mb-4  md:mb-8">
+              {isSignUp ? "Sign Up" : "Login"} To Live
+            </h1>
           </div>
           <div className={styles["form"]}>
-            <SignUpForm isSignUp={isSignUp}  ></SignUpForm>
+            <SignUpForm isSignUp={isSignUp}></SignUpForm>
             <div className={styles["bg"]}>
               <DottedBg></DottedBg>
             </div>
