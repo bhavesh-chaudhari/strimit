@@ -87,7 +87,7 @@ const AuthForm = ({
       signup(formValues);
     } else {
       // login user
-      delete formValues["type"];
+      delete formValues["role"];
       login(formValues);
     }
   };
@@ -107,7 +107,7 @@ const AuthForm = ({
                 <div
                   onClick={() => {
                     setTabIndex(0);
-                    setFormValues({ ...formValues, type: "streamer" });
+                    setFormValues({ ...formValues, role: "streamer" });
                   }}
                   className={
                     tabIndex === 0
@@ -120,7 +120,7 @@ const AuthForm = ({
                 <div
                   onClick={() => {
                     setTabIndex(1);
-                    setFormValues({ ...formValues, type: "advertiser" });
+                    setFormValues({ ...formValues, role: "advertiser" });
                   }}
                   className={
                     tabIndex === 1

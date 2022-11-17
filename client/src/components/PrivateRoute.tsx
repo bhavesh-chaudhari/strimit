@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getUserFromLocalStorage } from "../utils/localStorage";
+import { useAuth } from "../hooks/useAuth";
 
 interface Props {
   protectedRoutes: string[];
@@ -8,28 +8,28 @@ interface Props {
 }
 
 const PrivateRoute = ({ protectedRoutes, children }: Props) => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const router = useRouter();
 
   const pathIsProtected = protectedRoutes.indexOf(router.pathname) !== -1;
 
-  useEffect(() => {
-    const user = getUserFromLocalStorage();
-    const isAuthenticated = user !== null;
-    const protect = async ()=>{
-      if (!isAuthenticated && pathIsProtected) {
-        await router.replace("/signup");
-        setIsLoading(false);
-      }
-      else{
-        setIsLoading(false)
-      }
-    }
-    protect()
-  }, []);
+  const { data, isLoading } = useAuth();
+  const isAuthenticated = data?.isAuthenticated;
 
-  if (isLoading && pathIsProtected) {
-    return <div className="black-screen"></div>;
+  console.log(pathIsProtected)
+
+  useEffect(() => {
+    const protect = async () => {
+      if (!isLoading && !isAuthenticated && pathIsProtected) {
+        await router.replace("/");
+      }
+    };
+    protect();
+  }, [isAuthenticated, isLoading, pathIsProtected]);
+
+  if ((isLoading || !isAuthenticated) && pathIsProtected) {
+    return (
+      <div className="min-h-screen w-full absolute left-0 top-0 bg-black"></div>
+    );
   }
 
   return children;

@@ -121,7 +121,7 @@ export const googleLogin = async (req: Request, res: Response) => {
     const newUser = await User.create({
       data: {
         email: user.email,
-        type: req.body.type
+        role: req.body.role
       },
     });
 
@@ -141,4 +141,13 @@ export const googleLogin = async (req: Request, res: Response) => {
 export const refreshToken = (req: Request, res: Response) => {
   try {
   } catch (error) {}
+};
+
+export const checkAuth = (req: Request, res: Response) => {
+  try {
+    console.log(req.user)
+    res.status(200).json({ role: req.user.role});
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+  }
 };

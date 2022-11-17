@@ -25,4 +25,6 @@ router.post("/google", authController.googleLogin)
 
 router.post("/google", authController.refreshToken);
 
+router.get("/checkAuth", ensureAuth, authController.checkAuth);
+
 export default router 

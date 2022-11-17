@@ -17,7 +17,7 @@ const GoogleButton = ({formValues, isSignUp}: any) => {
      onSuccess: async ({ code }) => {
        const {data, status} = await axios.post(`${API_BASE_URL}/auth/google`, {
          code,
-         type: formValues.type
+         role: formValues.role
        });
 
        console.log(data);
@@ -36,7 +36,7 @@ const GoogleButton = ({formValues, isSignUp}: any) => {
   
    console.log(formValues)
    
-   const isDisabled = isSignUp && !formValues?.type
+   const isDisabled = isSignUp && !formValues?.role
    
   return (
     <button

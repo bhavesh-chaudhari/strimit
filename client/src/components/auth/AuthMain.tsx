@@ -6,13 +6,13 @@ import DottedBg from "../svgs/DottedBg"
 const initialFormValues = {
   email: "",
   password: "",
-  type: "",
+  role: "",
 };
 
 export interface FormValues {
   email: string;
   password: string;
-  type?: string;
+  role?: string;
 }
 
 const AuthMain = ({isSignUp}: {isSignUp: boolean}) => {
@@ -30,7 +30,7 @@ const AuthMain = ({isSignUp}: {isSignUp: boolean}) => {
           <div className="">
             <h1 className="text-2xl font-bold md:text-3xl mb-4  md:mb-8">
               {isSignUp ? "Sign Up" : "Login"}
-              {isSignUp && formValues.type ? ` as ${capitalizeFirstLetter(formValues?.type as string)}` : " to LIVE"}
+              {isSignUp && formValues.role ? ` as ${capitalizeFirstLetter(formValues?.role as string)}` : " to LIVE"}
             </h1>
           </div>
           <div className={styles["form"]}>
