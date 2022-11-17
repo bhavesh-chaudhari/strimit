@@ -121,6 +121,7 @@ export const googleLogin = async (req: Request, res: Response) => {
     const newUser = await User.create({
       data: {
         email: user.email,
+        type: req.body.type
       },
     });
 
