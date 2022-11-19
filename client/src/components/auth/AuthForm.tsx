@@ -6,18 +6,7 @@ import Link from "next/link";
 import { useLogin, useSignup } from "../../hooks/useAuth";
 import { QueryClient } from "@tanstack/react-query";
 import { ScaleLoader } from "react-spinners";
-
-const initialFormValues = {
-  email: "",
-  password: "",
-  type: "streamer",
-};
-
-interface FormValues {
-  email: string;
-  password: string;
-  type?: string
-}
+import { FormValues } from "./AuthMain";
 
 const Fields = ({
   formValues,
@@ -26,6 +15,8 @@ const Fields = ({
   formValues: FormValues;
   setFormValues: React.Dispatch<React.SetStateAction<FormValues>>;
 }) => {
+
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -61,10 +52,16 @@ const Fields = ({
   );
 };
 
-const AuthForm = ({ isSignUp }: { isSignUp: boolean }) => {
-  const [formValues, setFormValues] = useState<FormValues>(initialFormValues);
-
-  const [tabIndex, setTabIndex] = useState<number>(0);
+const AuthForm = ({
+  isSignUp,
+  formValues,
+  setFormValues,
+}: {
+  isSignUp: boolean;
+  formValues: FormValues;
+  setFormValues: React.Dispatch<React.SetStateAction<FormValues>>;
+}) => {
+  const [tabIndex, setTabIndex] = useState<number>(2);
 
   const {
     mutate: login,
@@ -80,17 +77,14 @@ const AuthForm = ({ isSignUp }: { isSignUp: boolean }) => {
     isSuccess: signupSuccess,
   } = useSignup();
 
-  console.log(loginLoading);
-
   const handleSubmit = (e: React.FormEvent) => {
-    console.log(formValues);
     e.preventDefault();
     if (isSignUp) {
       // signup user
       signup(formValues);
     } else {
       // login user
-      delete formValues["type"]
+      delete formValues["role"];
       login(formValues);
     }
   };
@@ -99,21 +93,18 @@ const AuthForm = ({ isSignUp }: { isSignUp: boolean }) => {
     <div className={styles["container"]}>
       <div className={styles["content"]}>
         <form onSubmit={handleSubmit} className={styles["form"]}>
-          <Fields
-            formValues={formValues}
-            setFormValues={setFormValues}
-          ></Fields>
           {isSignUp && (
             <div className={styles["tabs-container"]}>
               <p>
-                I'm {tabIndex === 0 && "a Streamer"}{" "}
-                {tabIndex === 1 && "an Advertiser"}
+                {tabIndex === 0 && "I'm a Streamer"}{" "}
+                {tabIndex === 1 && "I'm an Advertiser"}
+                {tabIndex === 2 && "Please select one"}
               </p>{" "}
               <div className={styles["tabs"]}>
                 <div
                   onClick={() => {
                     setTabIndex(0);
-                    setFormValues({ ...formValues, type: "streamer" });
+                    setFormValues({ ...formValues, role: "streamer" });
                   }}
                   className={
                     tabIndex === 0
@@ -126,7 +117,7 @@ const AuthForm = ({ isSignUp }: { isSignUp: boolean }) => {
                 <div
                   onClick={() => {
                     setTabIndex(1);
-                    setFormValues({ ...formValues, type: "advertiser" });
+                    setFormValues({ ...formValues, role: "advertiser" });
                   }}
                   className={
                     tabIndex === 1
@@ -139,6 +130,10 @@ const AuthForm = ({ isSignUp }: { isSignUp: boolean }) => {
               </div>
             </div>
           )}
+          <Fields
+            formValues={formValues}
+            setFormValues={setFormValues}
+          ></Fields>
           <button>
             {loginLoading || signupLoading ? (
               <ScaleLoader height={15} color="white"></ScaleLoader>
@@ -152,7 +147,10 @@ const AuthForm = ({ isSignUp }: { isSignUp: boolean }) => {
             <p>OR</p>
           </div>
           <div className={styles["google-btn"]}>
-            <GoogleButton isSignUp={isSignUp} formValues={formValues}></GoogleButton>
+            <GoogleButton
+              isSignUp={isSignUp}
+              formValues={formValues}
+            ></GoogleButton>
           </div>
           <div className={styles["notice"]}>
             <p>

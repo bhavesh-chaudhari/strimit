@@ -6,7 +6,10 @@
       gap: 10px;
       display: flex;
       flex-direction: column;
-      margin-bottom: 1rem;
+      margin-bottom: 4px;
+      p{
+        font-weight: 400;
+      }
       .tabs{
       display: flex;
       width: 100%;

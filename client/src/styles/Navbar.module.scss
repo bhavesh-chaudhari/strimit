@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-self: stretch;
-  z-index: 1000;
+  z-index: 40;
   color: white;
   height: 65px;
   width: 100%;
@@ -15,7 +15,7 @@
     max-width: 1300px;
     .nav-links {
       display: flex;
-      z-index: 1000;
+      z-index: 1;
       ul {
         display: flex;
         justify-content: center;
@@ -23,8 +23,7 @@
         list-style-type: none;
         gap: 3rem;
         li {
-          font-size: 16px;
-          text-transform: uppercase;
+          font-size: 17px;
         }
       }
       .link {
@@ -101,7 +100,6 @@
         transition: all 0.5s ease;
         min-height: 100vh;
         flex-direction: column;
-        justify-content: space-between;
         ul {
           flex-direction: column;
           align-items: flex-start;
@@ -109,7 +107,7 @@
           margin-left: 0.625rem;
           gap: 1rem;
           li {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             margin: 0.9rem;
             &:nth-of-type(1){
@@ -183,7 +181,7 @@
       cursor: pointer;
       transition: all 0.5s ease-in-out;
       border-radius: 3px;
-      z-index: 10000;
+      z-index: 5;
     }
     .hamburger {
       width: 30px;

@@ -11,6 +11,7 @@ module.exports = {
       colors: {
         colors: {
           "theme-black": "#1c1c1c",
+          "modal": "rgb(0 0 0/0.7)",
         },
       },
       keyframes: {

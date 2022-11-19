@@ -3,7 +3,8 @@ import { Request, Response, Application } from "express";
 import dotenv from "dotenv";
 import path from "path";
 import cors from "cors";
-import authRoutes from "./routes/auth"
+import authRoutes from "./routes/auth";
+import userRoutes from "./routes/users";
 import { StatusCodes } from "http-status-codes";
 import rateLimit from "express-rate-limit";
 
@@ -35,7 +36,8 @@ app.use(limiter);
 app.get("/", (req, res) => {
   res.status(StatusCodes.OK).json({ status: "ok" }); // test route
 });
-app.use("/api/v1/auth", authRoutes)
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/users", userRoutes)
 
 
 // read PORT from environment 
