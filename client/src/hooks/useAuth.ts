@@ -2,10 +2,12 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { request } from "../utils/axios";
 import {
   addUserToLocalStorage,
+  getUserFromLocalStorage,
   removeUserFromLocalStorage,
 } from "../utils/localStorage";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { useUserTokenInfo } from "./useUser";
 
 interface FormValues {
   email: string;
@@ -25,8 +27,6 @@ const checkAuth = async () => {
 
   const data = res?.data;
 
-  console.log("check auth");
-
   const isAuthenticated: boolean = res?.status === 200;
 
   return { role: data?.role as string, isAuthenticated };
@@ -35,9 +35,8 @@ const checkAuth = async () => {
 export const useAuth = () => {
   const router = useRouter();
 
-  const protectedRoutes = ["/dashboard", "/streamer-form", "/advertiser-form"];
+  const protectedRoutes = ["/dashboard", "/streamer", "/advertiser"];
 
-  // const isProtected = router.pathname.startsWith("/dashboard");
   const isProtected = protectedRoutes.indexOf(router.pathname) !== -1;
 
   return useQuery({
@@ -55,11 +54,14 @@ export const useLogin = () => {
    const queryClient = useQueryClient();
 
   return useMutation(login, {
-    onSuccess: (data) => {
-      console.log(data);
-      if (data.status === 200) {
+    onSuccess: async (data) => {
+      if (data?.status === 200) {
         addUserToLocalStorage(data.data);
-        queryClient.setQueryData(["user", data?.data.id], data.data) ;
+        queryClient.setQueryData(["users", data?.data.id], data.data) ;
+        queryClient.setQueryData(["auth"], () => {
+          return { role: data?.data.role, isAuthenticated: true };
+        });
+        await router.replace("/")
         toast("Logged In", {
           type: "success",
           position: "bottom-right",
@@ -77,14 +79,17 @@ export const useSignup = () => {
 
   return useMutation(signup, {
     onSuccess: (data) => {
-      console.log(data);
-      if (data.status === 200) {
+      if (data?.status === 200) {
         addUserToLocalStorage(data.data);
+        queryClient.setQueryData(["users", data?.data.id], data.data);
+        queryClient.setQueryData(["auth"], () => {
+          return { role: data?.data.role, isAuthenticated: true };
+        });
          if (data.data.role === "streamer") {
-           router.replace("/streamer-form");
+           router.replace("/streamer");
          }
          if (data.data.role === "advertiser") {
-           router.replace("/advertiser-form");
+           router.replace("/advertiser");
          }
         toast("Signed Up Successfully", {
           type: "success",
@@ -99,14 +104,23 @@ export const useSignup = () => {
   });
 };
 
-export const logout = () => {
-  removeUserFromLocalStorage();
-  toast("Logged Out Successfully", {
-    type: "success",
-    position: "bottom-right",
-    theme: "dark",
-    style: {
-      marginTop: "5rem",
-    },
-  });
+export const useLogout = () => {
+
+  const queryClient = useQueryClient();
+
+  const logout = ()=>{
+    const user = getUserFromLocalStorage();
+    removeUserFromLocalStorage();
+    queryClient.setQueryData(["users", user.id], null);
+    toast("Logged Out Successfully", {
+      type: "success",
+      position: "bottom-right",
+      theme: "dark",
+      style: {
+        marginTop: "5rem",
+      },
+    });
+  }
+
+  return logout
 };

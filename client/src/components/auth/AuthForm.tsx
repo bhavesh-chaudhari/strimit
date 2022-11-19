@@ -77,10 +77,7 @@ const AuthForm = ({
     isSuccess: signupSuccess,
   } = useSignup();
 
-  console.log(loginLoading);
-
   const handleSubmit = (e: React.FormEvent) => {
-    console.log(formValues);
     e.preventDefault();
     if (isSignUp) {
       // signup user

@@ -1,11 +1,14 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styles from "../styles/Hero.module.scss";
 import { HeroBg1 } from "./svgs";
 import Link from "next/link";
 import Image from "next/image";
+import { getUserFromLocalStorage } from "../utils/localStorage";
 
 const Hero = (): JSX.Element => {
   const containerRef = useRef<any>(null);
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,6 +24,11 @@ const Hero = (): JSX.Element => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
+  }, []);
+
+  useEffect(() => {
+    setLoading(false)
+    setUser(getUserFromLocalStorage);
   }, []);
 
   return (
@@ -56,16 +64,27 @@ const Hero = (): JSX.Element => {
           </div>
         </div>
         <div className="mt-8 gap-5 flex justify-center">
-          <Link href={"/signup"} passHref>
-            <a className="bg-blue-600 hover:bg-blue-500 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-3 px-5 md:px-6 text-lg rounded-md">
-              Signup Now
-            </a>
-          </Link>
-          <Link href={"/calculator"} passHref>
-            <a className="bg-white hover:bg-gray-200 text-black border-2 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-3 px-5 md:px-6 text-lg rounded-md">
-              Calculate
-            </a>
-          </Link>
+          {loading ? (
+            ""
+          ) : (
+            <>
+              {" "}
+              {!user?.id ? (
+                <Link href={"/signup"} passHref>
+                  <a className="bg-blue-600 hover:bg-blue-500 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-3 px-5 md:px-6 text-lg rounded-md">
+                    Signup Now
+                  </a>
+                </Link>
+              ) : (
+                ""
+              )}
+              <Link href={"/calculator"} passHref>
+                <a className="bg-white hover:bg-gray-200 text-black border-2 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-3 px-5 md:px-6 text-lg rounded-md">
+                  Calculate
+                </a>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>

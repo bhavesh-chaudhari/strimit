@@ -3,39 +3,44 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "../styles/Navbar.module.scss";
 import { getUserFromLocalStorage } from "../utils/localStorage";
-import { logout } from "../hooks/useAuth";
+import { useLogout } from "../hooks/useAuth";
 import Image from "next/image";
+import { useAuth } from "../hooks/useAuth";
+import { useUser } from "../hooks/useUser";
 
 const Navbar = (): JSX.Element => {
   const [show, setShow] = useState<boolean>(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const router = useRouter();
 
+  const { data } = useUser();
+
+  const logout = useLogout();
+
   useEffect(() => {
-    const loggedInUser = getUserFromLocalStorage();
-    setUser(loggedInUser);
-  }, [user]);
-
-  useEffect(()=>{
-
-    const resize = ()=>{
+    const resize = () => {
       if (show && window.innerWidth < 768) {
         document.body.style.overflowY = "hidden";
       } else {
         document.body.style.overflowY = "auto";
       }
-    }
+    };
 
-    window.addEventListener("resize", resize)
+    window.addEventListener("resize", resize);
 
-    resize()
+    resize();
 
-    return ()=>{
-      window.removeEventListener("resize", resize)
-    }
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+  }, [show]);
 
-  }, [show])
+  useEffect(() => {
+    setUser({...getUserFromLocalStorage(), ...data});
+    setIsLoading(false);
+  }, [data]);
 
   const links = [
     {
@@ -55,8 +60,8 @@ const Navbar = (): JSX.Element => {
     },
     {
       id: 4,
-      path: user ? "" : "/signup",
-      name: user ? "Logout" : "Sign Up",
+      path: user?.id ? "" : "/signup",
+      name: user?.id ? "Logout" : "Sign Up",
     },
   ];
 
@@ -64,6 +69,14 @@ const Navbar = (): JSX.Element => {
     logout();
     router.replace("/");
   };
+
+  function capitalizeFirstLetter(string: string) {
+    if (!string) {
+      return;
+    }
+
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   return (
     <div className={styles["navbar-container"]}>
@@ -98,30 +111,41 @@ const Navbar = (): JSX.Element => {
         >
           <ul>
             <li className={styles["menu-title"]}>Menu</li>
-            {links.map((link) => {
-              return (
-                <li
-                  key={link.id}
-                  onClick={() => {
-                    setShow((prevState) => !prevState);
-                  }}
-                  className={
-                    router.pathname === link.path ? styles["active"] : ""
-                  }
-                >
-                  {link.path === "" ? (
-                    <button onClick={logoutUser} className={styles["link"]}>
-                      {link.name}
-                    </button>
-                  ) : (
-                    <Link scroll={true} href={link.path} passHref>
-                      <a className={styles["link"]}>{link.name}</a>
-                    </Link>
-                  )}
-                </li>
-              );
-            })}
+            {!isLoading
+              ? links.map((link) => {
+                  return (
+                    <li
+                      key={link.id}
+                      onClick={() => {
+                        setShow((prevState) => !prevState);
+                      }}
+                      className={
+                        router.pathname === link.path ? styles["active"] : ""
+                      }
+                    >
+                      {link.path === "" ? (
+                        <button onClick={logoutUser} className={styles["link"]}>
+                          {link.name}
+                        </button>
+                      ) : (
+                        <Link scroll={true} href={link.path} passHref>
+                          <a className={styles["link"]}>{link.name}</a>
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })
+              : ""}
           </ul>
+          {user?.role && !isLoading ? (
+            <span className="relative p-[1px] max-w-max mt-4 md:mt-0  flex items-center md:justify-center ml-6 md:ml-8 bg-gradient-to-r from-blue-500 to-pink-500">
+              <span className="bg-colors-theme-black px-2 uppercase">
+                {capitalizeFirstLetter(user?.role)}
+              </span>
+            </span>
+          ) : (
+            ""
+          )}
         </div>
       </nav>
     </div>

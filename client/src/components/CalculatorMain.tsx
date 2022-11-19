@@ -109,7 +109,6 @@ const CalculatorMain = () => {
 
     if (!isBannerAd && isStreamer) {
 
-      console.log("this")
       setCalculatorValues({
         ...calculatorValues,
         noOfTimesAdPlayed: { ...calculatorValues.noOfTimesAdPlayed, value },

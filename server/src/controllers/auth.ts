@@ -17,7 +17,7 @@ export const signup = async (req: Request, res: Response) => {
   try {
     const user = await User.findUnique({
       where: {
-        email: req.body.email
+        email: req.body.email,
       },
     });
 
@@ -37,7 +37,7 @@ export const signup = async (req: Request, res: Response) => {
     const { password, ...userWithoutPassword } = newUser;
 
     const token = jwt.sign(
-      { id: newUser.id, email: newUser.email },
+      { id: newUser.id, email: newUser.email, role: userWithoutPassword.role },
       process.env.JWT_SECRET as string,
       { expiresIn: "30d" }
     );
@@ -67,7 +67,9 @@ export const login = async (req: Request, res: Response) => {
       },
     });
 
-    if (!user) {
+    console.log(user)
+    
+    if (!user || !user.password) {
       return res.status(400).json({ error: "Invalid Credentials" });
     }
 
@@ -76,12 +78,12 @@ export const login = async (req: Request, res: Response) => {
       user.password as string
     );
 
-    if (!isPasswordCorrect) {
+    if (!isPasswordCorrect || user.password === null) {
       return res.status(400).json({ error: "Invalid Credentials" });
     }
 
     const token = jwt.sign(
-      { id: user.id, email },
+      { id: user.id, email, role: user.role },
       process.env.JWT_SECRET as string,
       { expiresIn: "30d" }
     );
@@ -91,18 +93,15 @@ export const login = async (req: Request, res: Response) => {
 
     res.status(200).json({ ...user, token });
   } catch (error) {
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+    res.status(StatusCodes.BAD_REQUEST).json(error);
   }
 };
 
 export const googleLogin = async (req: Request, res: Response) => {
   try {
     const { tokens } = await oAuth2Client.getToken(req.body.code); // exchange code for tokens
-    console.log(tokens);
 
     const user = jwtDecode((tokens as any).id_token) as any;
-
-    console.log(user);
 
     const alreadyRegisteredUser = await User.findUnique({
       where: {
@@ -111,27 +110,45 @@ export const googleLogin = async (req: Request, res: Response) => {
     });
 
     if (alreadyRegisteredUser) {
+      const token = jwt.sign(
+        {
+          id: alreadyRegisteredUser.id,
+          email: alreadyRegisteredUser.email,
+          role: alreadyRegisteredUser.role,
+        },
+        process.env.JWT_SECRET as string,
+        { expiresIn: "30d" }
+      );
+
       return res.status(200).json({
-        token: tokens.access_token,
         email: alreadyRegisteredUser.email,
         id: alreadyRegisteredUser.id,
+        role: alreadyRegisteredUser.role,
+        token: token,
       });
     }
 
     const newUser = await User.create({
       data: {
         email: user.email,
-        role: req.body.role
+        role: req.body.role ? req.body.role : undefined,
       },
     });
 
-    return res
-      .status(200)
-      .json({
-        token: tokens.access_token,
-        email: newUser.email,
-        id: newUser.id,
-      });
+    console.log(newUser)
+
+    const token = jwt.sign(
+      { id: newUser.id, email: newUser.email, role: newUser.role },
+      process.env.JWT_SECRET as string,
+      { expiresIn: "30d" }
+    );
+
+    return res.status(200).json({
+      token: token,
+      email: newUser.email,
+      id: newUser.id,
+      role: newUser.role,
+    });
   } catch (error) {
     console.log(error);
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
@@ -145,8 +162,8 @@ export const refreshToken = (req: Request, res: Response) => {
 
 export const checkAuth = (req: Request, res: Response) => {
   try {
-    console.log(req.user)
-    res.status(200).json({ role: req.user.role});
+    console.log(req.user);
+    res.status(200).json({ role: req.user.role });
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
   }

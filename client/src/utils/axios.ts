@@ -1,13 +1,16 @@
-import axios from "axios";
-import { API_BASE_URL } from "../config/baseUrl";
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
+import { API_BASE_URL } from "./baseUrl";
+import { getUserFromLocalStorage } from "./localStorage";
 
 const client = axios.create({ baseURL: API_BASE_URL });
 
-export const request = ({ ...options }) => {
-//   client.defaults.headers.common.Authorization = `Bearer token`;
+export const request = ({ ...options }: AxiosRequestConfig) => {
+  const user = getUserFromLocalStorage();
 
-  const onSuccess = (response: any) => response;
-  const onError = (error: any) => {
+  client.defaults.headers.common.Authorization = `Bearer ${user?.token}`;
+
+  const onSuccess = (response: AxiosResponse) => response;
+  const onError = (error: AxiosError) => {
     return error.response;
   };
 

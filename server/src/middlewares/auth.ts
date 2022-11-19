@@ -15,9 +15,12 @@ export const ensureAuth = async (
     }
 
     const token = authHeader.split(" ")[1];
-    const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
 
-    // console.log(decoded)
+    if(token === undefined || token === null){
+      return res.status(400).json("no token")
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
 
     const { id, email, role } = decoded as {id: number, email: string, role: string};
 

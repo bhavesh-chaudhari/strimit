@@ -16,16 +16,17 @@ export const ensureOwnership = (
     }
 
     const token = authHeader.split(" ")[1];
+
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
 
     const { id, role } = decoded as any;
 
-    if (id === Number(req.params.id) || role === "admin") {
+    if (Number(id) === Number(req.params.id) || role === "admin") {
       return next();
     } else {
       return res
         .status(StatusCodes.FORBIDDEN)
-        .json({ message: "Can't access complaints of another user" });
+        .json({ message: "Access Denied" });
     }
   } catch (error) {
     return res.status(400).json({ error: "Not authorized to access this route" });

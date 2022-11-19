@@ -1,4 +1,10 @@
-import { QueryKey, useQuery } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryKey,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { request } from "../utils/axios";
 import { getUserFromLocalStorage } from "../utils/localStorage";
 import { useState, useEffect } from "react";
@@ -53,5 +59,39 @@ export const useUser = () => {
     refetchOnWindowFocus: false,
     staleTime: Infinity,
     refetchOnMount: false,
+  });
+};
+
+const updateRole = async (updateValues: any) => {
+  const res = await request({
+    url: `/users/${updateValues.id}`,
+    method: "patch",
+    data: { role: updateValues.role },
+  });
+
+  return res;
+};
+
+export const useUpdateRole = () => {
+  const { id } = useUserTokenInfo();
+
+  const queryClient = useQueryClient();
+
+  const router = useRouter();
+
+  return useMutation({
+    mutationFn: updateRole,
+    onSuccess: async (data) => {
+      if (data?.status === 200) {
+        queryClient.setQueryData(["user", data?.data.id], data.data);
+        if (data.data.role === "advertiser") {
+          await router.replace("/advertiser");
+        }
+        if (data.data.role === "streamer") {
+          await router.replace("/streamer");
+        }
+      }
+    },
+    mutationKey: ["update", "role", id],
   });
 };
