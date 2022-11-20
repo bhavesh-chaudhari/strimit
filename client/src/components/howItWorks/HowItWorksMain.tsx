@@ -6,12 +6,13 @@ import {VscWorkspaceTrusted} from "react-icons/vsc"
 import {AiOutlineStock} from "react-icons/ai"
 import {GiPayMoney} from "react-icons/gi"
 import { Pattern } from "../svgs";
+import Link from "next/link";
 
 const HowItWorksMain = () => {
   return (
     <div className="flex justify-center items-center pb-12">
       <div className="w-[90%]">
-        <div className="mb-6 relative before:absolute before:-translate-x-1/2 before:-translate-y-[110%] before:left-1/2 before:w-[1px] before:h-44 before:bg-gradient-to-t before:from-blue-600 before:to-black">
+        <div className="mb-6 relative before:absolute before:-translate-x-1/2 before:-translate-y-[110%] before:left-1/2 before:w-[1px] before:h-52 md:before:h-44 before:bg-gradient-to-t before:from-blue-600 before:to-black">
           <h2 className="text-center text-3xl font-bold">
             Are you a streamer?
           </h2>
@@ -57,7 +58,7 @@ const HowItWorksMain = () => {
             </ul>
           </div>
           <div className={styles["cta"]}>
-            <a href="">Sign me Up</a>
+            <Link href="/signup">Sign me Up</Link>
           </div>
         </div>
         <div className="mb-6 relative pt-40 before:absolute before:-translate-x-1/2 before:-translate-y-[110%] before:left-1/2 before:w-[1px] before:h-44 before:bg-gradient-to-t before:from-orange-600 before:to-black">
@@ -113,7 +114,7 @@ const HowItWorksMain = () => {
             {/* <p className="text-sm">*T&C applied.</p> */}
           </div>
           <div className={styles["cta"]}>
-            <a href="">Advertise with us</a>
+            <Link href="/signup">Advertise with us</Link>
           </div>
         </div>
       </div>

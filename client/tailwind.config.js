@@ -8,10 +8,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        "2xl": "1600px",
+      },
       colors: {
         colors: {
           "theme-black": "#1c1c1c",
-          "modal": "rgb(0 0 0/0.7)",
+          modal: "rgb(0 0 0/0.7)",
         },
       },
       keyframes: {
