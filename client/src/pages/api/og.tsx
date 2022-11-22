@@ -45,8 +45,8 @@ export default function handler(req: NextRequest) {
           >
             <img
               alt="Live"
-              height={200}
-              src=""
+              height={70}
+              src="https://www.liveads.stream/logos/live.svg"
               style={{ margin: "0 30px" }}
               width={200}
             />
@@ -57,10 +57,11 @@ export default function handler(req: NextRequest) {
               fontStyle: "normal",
               letterSpacing: "-0.025em",
               color: "white",
-              marginTop: 30,
+              marginTop: 40,
               padding: "0 120px",
               lineHeight: 1.4,
               whiteSpace: "pre-wrap",
+              textTransform: "uppercase"
             }}
           >
             {title}
@@ -71,7 +72,7 @@ export default function handler(req: NextRequest) {
               fontStyle: "normal",
               letterSpacing: "-0.025em",
               color: "white",
-              marginTop: 30,
+              marginTop: 20,
               padding: "0 120px",
               lineHeight: 1.4,
               whiteSpace: "pre-wrap",

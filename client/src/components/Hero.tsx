@@ -4,11 +4,14 @@ import { HeroBg1 } from "./svgs";
 import Link from "next/link";
 import Image from "next/image";
 import { getUserFromLocalStorage } from "../utils/localStorage";
+import { useUser } from "../hooks/useUser";
 
 const Hero = (): JSX.Element => {
   const containerRef = useRef<any>(null);
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true)
+
+  const { data } = useUser();
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,7 +32,7 @@ const Hero = (): JSX.Element => {
   useEffect(() => {
     setLoading(false)
     setUser(getUserFromLocalStorage);
-  }, []);
+  }, [data]);
 
   return (
     <div className="flex items-center justify-center flex-col w-full">
@@ -70,18 +73,22 @@ const Hero = (): JSX.Element => {
             ) : (
               <>
                 {!user?.id ? (
-                  <Link href={"/signup"} passHref>
-                    <a className="bg-blue-600 hover:bg-blue-500 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-3 px-5 md:px-6 2xl:text-2xl text-lg rounded-md">
-                      Signup Now
-                    </a>
+                  <Link
+                    className="bg-blue-600 hover:bg-blue-500 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-3 px-5 md:px-6 2xl:text-2xl text-lg rounded-md"
+                    href={"/signup"}
+                    passHref
+                  >
+                    Signup Now
                   </Link>
                 ) : (
                   ""
                 )}
-                <Link href={"/calculator"} passHref>
-                  <a className="bg-white shadow-blue-400 shadow-md hover:bg-gray-200 text-black border-2 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-3 2xl:text-2xl  px-5 md:px-6 text-lg rounded-md">
-                    Calculate
-                  </a>
+                <Link
+                  className="bg-white shadow-blue-400 shadow-md hover:bg-gray-200 text-black border-2 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-3 2xl:text-2xl  px-5 md:px-6 text-lg rounded-md"
+                  href={"/calculator"}
+                  passHref
+                >
+                  Calculate
                 </Link>
               </>
             )}

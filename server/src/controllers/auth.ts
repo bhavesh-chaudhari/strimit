@@ -53,7 +53,7 @@ export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
 
-    console.log(req.body);
+    // console.log(req.body);
 
     if (!email || !password) {
       return res
@@ -67,7 +67,7 @@ export const login = async (req: Request, res: Response) => {
       },
     });
 
-    console.log(user)
+    // console.log(user)
     
     if (!user || !user.password) {
       return res.status(400).json({ error: "Invalid Credentials" });
@@ -93,7 +93,7 @@ export const login = async (req: Request, res: Response) => {
 
     res.status(200).json({ ...user, token });
   } catch (error) {
-    res.status(StatusCodes.BAD_REQUEST).json(error);
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
   }
 };
 
@@ -135,7 +135,7 @@ export const googleLogin = async (req: Request, res: Response) => {
       },
     });
 
-    console.log(newUser)
+    // console.log(newUser)
 
     const token = jwt.sign(
       { id: newUser.id, email: newUser.email, role: newUser.role },
@@ -162,7 +162,7 @@ export const refreshToken = (req: Request, res: Response) => {
 
 export const checkAuth = (req: Request, res: Response) => {
   try {
-    console.log(req.user);
+    // console.log(req.user);
     res.status(200).json({ role: req.user.role });
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);

@@ -17,7 +17,7 @@ dotenv.config();
 // configure cors
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://www.liveads.stream",
     credentials: true,
   })
 );
@@ -34,7 +34,7 @@ app.use(limiter);
 
 // Routes
 app.get("/", (req, res) => {
-  res.status(StatusCodes.OK).json({ status: "ok" }); // test route
+  res.status(StatusCodes.OK).json({ status: "ok works" }); // test route
 });
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes)

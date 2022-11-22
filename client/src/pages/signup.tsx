@@ -8,6 +8,10 @@ const signup: NextPage = () => {
     <>
       <Head>
         <title>Signup - Live</title>
+        <meta
+          property="og:image"
+          content="https://liveads.stream/api/og?title=Signup&path=www.liveads.stream/signup"
+        ></meta>
       </Head>
       <AuthMain isSignUp={true}></AuthMain>
     </>

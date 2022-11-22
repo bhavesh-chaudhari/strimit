@@ -128,8 +128,13 @@ const Navbar = (): JSX.Element => {
                           {link.name}
                         </button>
                       ) : (
-                        <Link scroll={true} href={link.path} passHref>
-                          <a className={styles["link"]}>{link.name}</a>
+                        <Link
+                          className={styles["link"]}
+                          scroll={true}
+                          href={link.path}
+                          passHref
+                        >
+                          {link.name}
                         </Link>
                       )}
                     </li>

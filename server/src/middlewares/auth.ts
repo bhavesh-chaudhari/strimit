@@ -49,7 +49,7 @@ export const ensureAdmin = async (
 
      const { role } = decoded as any;
 
-     console.log(role)
+    //  console.log(role)
 
      if(role === "admin"){
       return next()

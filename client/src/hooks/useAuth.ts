@@ -68,6 +68,16 @@ export const useLogin = () => {
           theme: "dark",
         });
       }
+      else{
+        toast("Invalid Credentials", {
+          type: "error",
+          position: "top-center",
+          theme: "dark",
+          style: {
+            marginTop: "2rem",
+          },
+        });
+      }
     },
   });
 };
@@ -97,6 +107,29 @@ export const useSignup = () => {
           theme: "dark",
           style: {
             marginTop: "5rem",
+          },
+        });
+        return
+      }
+      
+      if(data?.status === 409){
+         toast("User Already Exists", {
+           type: "error",
+           position: "top-center",
+           theme: "dark",
+           style: {
+             marginTop: "2rem",
+           },
+         });
+         return
+      }
+      else{
+        toast("A problem has occured. Please try again later.", {
+          type: "error",
+          position: "top-center",
+          theme: "dark",
+          style: {
+            marginTop: "2rem",
           },
         });
       }
