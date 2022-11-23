@@ -28,7 +28,7 @@ const StreamerForm = () => {
   return (
     <>
       <Head>
-        <style type="text/css"></style>
+        <title>Streamer's Form - LIVE</title>
       </Head>
       <div>
         {loading && (

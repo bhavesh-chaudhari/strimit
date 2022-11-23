@@ -7,8 +7,12 @@ import {AiOutlineStock} from "react-icons/ai"
 import {GiPayMoney} from "react-icons/gi"
 import { Pattern } from "../svgs";
 import Link from "next/link";
+import { useUserTokenInfo } from "../../hooks/useUser";
 
 const HowItWorksMain = () => {
+
+  const {id, role} = useUserTokenInfo()
+  
   return (
     <div className="flex justify-center items-center pb-12">
       <div className="w-[90%]">
@@ -58,7 +62,7 @@ const HowItWorksMain = () => {
             </ul>
           </div>
           <div className={styles["cta"]}>
-            <Link href="/signup">Sign me Up</Link>
+            {!id && <Link href="/signup">Sign me Up</Link>}
           </div>
         </div>
         <div className="mb-6 relative pt-40 before:absolute before:-translate-x-1/2 before:-translate-y-[110%] before:left-1/2 before:w-[1px] before:h-44 before:bg-gradient-to-t before:from-orange-600 before:to-black">
@@ -114,7 +118,7 @@ const HowItWorksMain = () => {
             {/* <p className="text-sm">*T&C applied.</p> */}
           </div>
           <div className={styles["cta"]}>
-            <Link href="/signup">Advertise with us</Link>
+            {!id && <Link href="/signup">Advertise with us</Link>}
           </div>
         </div>
       </div>

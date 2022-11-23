@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Live - The way of advertising for live streams.</title>
+        <title>LIVE - The way of advertising for live streams.</title>
         <meta name="description" content="Advertise your live streams with LIVE." />
         <meta name="keywords" content="Advertise, Live Streams" />
         <meta name="robots" content="index, follow" />

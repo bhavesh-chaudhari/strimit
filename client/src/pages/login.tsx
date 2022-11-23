@@ -7,7 +7,7 @@ const login: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Login - Live</title>
+        <title>Login - LIVE</title>
         <meta
           property="og:image"
           content="https://liveads.stream/api/og?title=LOGIN&path=www.liveads.stream/login"

@@ -6,7 +6,7 @@ import { getUserFromLocalStorage } from "../utils/localStorage";
 import { useLogout } from "../hooks/useAuth";
 import Image from "next/image";
 import { useAuth } from "../hooks/useAuth";
-import { useUser } from "../hooks/useUser";
+import { useCurrentUser } from "../hooks/useUser";
 
 const Navbar = (): JSX.Element => {
   const [show, setShow] = useState<boolean>(false);
@@ -15,7 +15,7 @@ const Navbar = (): JSX.Element => {
 
   const router = useRouter();
 
-  const { data } = useUser();
+  const { data } = useCurrentUser();
 
   const logout = useLogout();
 
@@ -143,7 +143,7 @@ const Navbar = (): JSX.Element => {
               : ""}
           </ul>
           {user?.role && !isLoading ? (
-            <span className="relative p-[1px] max-w-max mt-4 md:mt-0  flex items-center md:justify-center ml-6 md:ml-8 bg-gradient-to-r from-blue-500 to-pink-500">
+            <span className="relative p-[1px] max-w-max mt-6 md:mt-0  flex items-center md:justify-center ml-6 md:ml-8 bg-gradient-to-r from-blue-500 to-pink-500">
               <span className="bg-colors-theme-black px-2 uppercase">
                 {capitalizeFirstLetter(user?.role)}
               </span>

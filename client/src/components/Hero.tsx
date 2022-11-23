@@ -4,14 +4,14 @@ import { HeroBg1 } from "./svgs";
 import Link from "next/link";
 import Image from "next/image";
 import { getUserFromLocalStorage } from "../utils/localStorage";
-import { useUser } from "../hooks/useUser";
+import { useCurrentUser } from "../hooks/useUser";
 
 const Hero = (): JSX.Element => {
   const containerRef = useRef<any>(null);
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true)
 
-  const { data } = useUser();
+  const { data } = useCurrentUser();
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,7 +40,7 @@ const Hero = (): JSX.Element => {
         ref={containerRef}
         className="overflow-hidden min-h-[calc(100vh-65px)] flex flex-col items-center pt-32 md:pt-[25vh] 2xl:pt-[30vh]"
       >
-        <div className="md:-translate-y-8">
+        <div className="md:-translate-y-8 flex flex-col items-center">
           <div className="w-full mb-8 flex flex-col items-center">
             <div className="mb-2 md:mb-6 2xl:mb-8 w-[100px] md:w-[150px] h-[60px] 2xl:w-[180px] relative flex justify-center items-center">
               <Image
@@ -67,14 +67,14 @@ const Hero = (): JSX.Element => {
               </div>
             </div>
           </div>
-          <div className="gap-5 flex justify-center">
+          <div className="gap-5 max-w-max flex justify-center">
             {loading ? (
               ""
             ) : (
               <>
                 {!user?.id ? (
                   <Link
-                    className="bg-blue-600 hover:bg-blue-500 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-3 px-5 md:px-6 2xl:text-2xl text-lg rounded-md"
+                    className="bg-blue-600 hover:bg-blue-500 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-2 px-5 md:px-6 2xl:text-2xl md:text-xl text-md rounded-md"
                     href={"/signup"}
                     passHref
                   >
@@ -84,7 +84,7 @@ const Hero = (): JSX.Element => {
                   ""
                 )}
                 <Link
-                  className="bg-white shadow-blue-400 shadow-md hover:bg-gray-200 text-black border-2 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-3 2xl:text-2xl  px-5 md:px-6 text-lg rounded-md"
+                  className="bg-white hover:shadow-blue-400 shadow-md hover:bg-gray-100 text-black border-2 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-2 2xl:text-2xl md:text-xl  px-5 md:px-6 text-md rounded-md"
                   href={"/calculator"}
                   passHref
                 >

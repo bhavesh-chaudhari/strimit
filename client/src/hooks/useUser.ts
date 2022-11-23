@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import jwtDecode from "jwt-decode";
 import { useRouter } from "next/router";
 import { UserType } from "../types/user";
+import { API_BASE_URL } from "../utils/baseUrl";
 
 export const useUserTokenInfo = () => {
   const [id, setId] = useState<number | null>(null);
@@ -41,19 +42,20 @@ export const useUserTokenInfo = () => {
 };
 
 const fetchUser = async ({ queryKey }: { queryKey: QueryKey }) => {
-  const id = queryKey[1];
-  const res = await request({ url: `/users/${id}` });
+  const user = getUserFromLocalStorage()
+  
+  const res = await request({ url: `/users/${user?.id}` });
 
   const data = res?.data;
 
   return data;
 };
 
-export const useUser = () => {
+export const useCurrentUser = () => {
   const { id } = useUserTokenInfo();
 
   return useQuery({
-    queryKey: ["users", id],
+    queryKey: ["currentUser"],
     queryFn: fetchUser,
     enabled: !!id,
     refetchOnWindowFocus: false,
@@ -83,7 +85,7 @@ export const useUpdateRole = () => {
     mutationFn: updateRole,
     onSuccess: async (data) => {
       if (data?.status === 200) {
-        queryClient.setQueryData(["user", data?.data.id], data.data);
+        queryClient.setQueryData(["currentUser"], data.data);
         if (data.data.role === "advertiser") {
           await router.replace("/advertiser");
         }

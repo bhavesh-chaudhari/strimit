@@ -7,7 +7,7 @@ const signup: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Signup - Live</title>
+        <title>Signup - LIVE</title>
         <meta
           property="og:image"
           content="https://liveads.stream/api/og?title=Signup&path=www.liveads.stream/signup"
