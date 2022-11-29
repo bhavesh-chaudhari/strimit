@@ -294,7 +294,7 @@ const CalculatorMain = () => {
               {isStreamer ? "Your Earnings" : "Advertising Cost"}
             </span>
             <div className="flex pt-10 w-full justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center">
-              <span className="px-8 w-full text-center font-bold text-xl md:text-3xl text-transparent text-green-500">
+              <span className="px-8 w-full text-center font-bold text-xl md:text-3xl text-green-500">
                 {result ? (
                   <span className="whitespace-pre-wrap break-words">
                     Rs. {result.toLocaleString()}
