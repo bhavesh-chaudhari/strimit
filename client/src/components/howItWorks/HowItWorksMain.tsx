@@ -110,7 +110,7 @@ const HowItWorksMain = () => {
                 We have a dedicated segment of the audience who watch live
                 streams.
               </li>
-              <li>No work excpet uploading image/video files</li>
+              <li>No work except uploading image/video files</li>
               <li>You only pay when someone watches your ad.</li>
               <li>We guarantee a 100% impression of your ad to the viewer.</li>
               <li>Moreover it's only ₹1 per view count. </li>

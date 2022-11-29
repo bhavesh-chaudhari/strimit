@@ -5,7 +5,7 @@ import "rc-slider/assets/index.css";
 
 const initialCalculatorValues = {
   totalNoOfViewers: {
-    value: "",
+    value: 1000,
     title: "Total number of viewers of your live stream when it ends",
     isValid: "",
   },
@@ -14,7 +14,7 @@ const initialCalculatorValues = {
     title: "Number of company logos displayed throughout the stream",
   },
   avgNoOfConViewers: {
-    value: "",
+    value: 1000,
     title: "Average number of concurrent viewers in your live stream",
     isValid: "",
   },
@@ -23,12 +23,12 @@ const initialCalculatorValues = {
     title: "Number of times you play the Ad in the stream",
   },
   associatedStreamers: {
-    value: "",
+    value: 10,
     title: "Number of associated streamers",
     isValid: "",
   },
   avgNoOfAudience: {
-    value: "",
+    value: 1000,
     title: "Average number of audience viewers per streamer",
     isValid: "",
   },
@@ -97,7 +97,7 @@ const CalculatorMain = () => {
   const [calculatorValues, setCalculatorValues] = useState(
     initialCalculatorValues
   );
-  const [result, setResult] = useState<number | null>(1000);
+  const [result, setResult] = useState<number | null>(3000);
 
   const handleSliderChange = (value: any) => {
     if (isBannerAd && isStreamer) {

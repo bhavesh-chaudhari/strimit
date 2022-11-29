@@ -34,11 +34,14 @@ const Hero = (): JSX.Element => {
     setUser(getUserFromLocalStorage);
   }, [data]);
 
+  console.log(user)
+
   return (
-    <div className="flex items-center justify-center flex-col w-full">
+    <div className="flex relative items-center overflow-hidden justify-center flex-col w-full">
+      {/* <div className="absolute gradient w-[60%] h-24 md:h-32 z-0 -rotate-[10deg] -top-[5%] -left-[5%]"></div> */}
       <div
         ref={containerRef}
-        className="overflow-hidden min-h-[calc(100vh-65px)] flex flex-col items-center pt-32 md:pt-[25vh] 2xl:pt-[30vh]"
+        className="overflow-hidden relative min-h-[calc(100vh-65px)] flex flex-col items-center pt-32 md:pt-[25vh] 2xl:pt-[30vh]"
       >
         <div className="md:-translate-y-8 flex flex-col items-center">
           <div className="w-full mb-8 flex flex-col items-center">
@@ -83,6 +86,29 @@ const Hero = (): JSX.Element => {
                 ) : (
                   ""
                 )}
+                {user?.id && user.role === "streamer" ? (
+                  <Link
+                    className="bg-blue-600 hover:bg-blue-500 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-2 px-5 md:px-6 2xl:text-2xl md:text-xl text-md rounded-md"
+                    href={"/streamer"}
+                    passHref
+                  >
+                    Streamer QnA
+                  </Link>
+                ) : (
+                  ""
+                )}
+                {user?.id && user.role === "advertiser" ? (
+                  <Link
+                    className="bg-blue-600 hover:bg-blue-500 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-2 px-5 md:px-6 2xl:text-2xl md:text-xl text-md rounded-md"
+                    href={"/advertiser"}
+                    passHref
+                  >
+                    Quick Survey
+                  </Link>
+                ) : (
+                  ""
+                )}
+
                 <Link
                   className="bg-white hover:shadow-blue-400 shadow-md hover:bg-gray-100 text-black border-2 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-2 2xl:text-2xl md:text-xl  px-5 md:px-6 text-md rounded-md"
                   href={"/calculator"}

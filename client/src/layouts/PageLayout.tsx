@@ -13,6 +13,7 @@ import {
 } from "../utils/localStorage";
 import Modal from "../components/Modal";
 import { PulseLoader, MoonLoader } from "react-spinners";
+import BookACall from "../components/BookACall"
 
 interface Props {
   children?: React.ReactNode;
@@ -91,6 +92,7 @@ const PageLayout = ({ children }: Props): JSX.Element => {
           </Modal>
         )}
         <Navbar></Navbar>
+        {/* <BookACall></BookACall> */}
         <div className={styles["layout"]}>{children}</div>
         {/* {noFooterPages.includes(currentPagePath) ? null : <Footer></Footer>} */}
         <CopyrightNotice></CopyrightNotice>

@@ -6,7 +6,10 @@
   color: white;
   height: 65px;
   width: 100%;
-  background: $theme-black;
+  // background: $theme-black;
+  background: transparent;
+  z-index: 10;
+  position: relative;
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -85,7 +88,15 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width:1650px){
+  .navbar-container{
+    .navbar{
+      max-width: 1600px;
+    }
+  }  
+}
+
+@media screen and (max-width: 900px) {
   .navbar-container {
     min-height: 60px;
     .navbar {
@@ -100,12 +111,13 @@
         transition: all 0.5s ease;
         min-height: 100vh;
         flex-direction: column;
+        z-index: 60;
         ul {
           flex-direction: column;
           align-items: flex-start;
           margin-top: 5rem;
           margin-left: 0.625rem;
-          gap: 1rem;
+          gap: 12px;
           li {
             font-size: 1rem;
             font-weight: 600;
@@ -182,6 +194,7 @@
       transition: all 0.5s ease-in-out;
       border-radius: 3px;
       z-index: 5;
+      z-index: 70;
     }
     .hamburger {
       width: 30px;

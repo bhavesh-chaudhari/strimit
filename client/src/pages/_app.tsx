@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <PageLayout>
           <Component {...pageProps} />
         </PageLayout>
-        <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"} ></ReactQueryDevtools>
+        {/* <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"} ></ReactQueryDevtools> */}
       </GoogleOAuthProvider>
       <ToastContainer></ToastContainer>
     </QueryClientProvider>

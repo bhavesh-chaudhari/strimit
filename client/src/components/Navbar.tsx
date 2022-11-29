@@ -142,6 +142,11 @@ const Navbar = (): JSX.Element => {
                 })
               : ""}
           </ul>
+          <Link href={"/book-a-demo"} className="relative p-[1px] max-w-max mb-3 md:mb-0 mt-6 md:mt-0 leading-none flex items-center md:justify-center ml-6 md:ml-8 bg-gray-400">
+            <span className="bg-green-500 p-1 px-2 uppercase">
+              Book a Demo
+            </span>
+          </Link>
           {user?.role && !isLoading ? (
             <span className="relative p-[1px] max-w-max mt-6 md:mt-0  flex items-center md:justify-center ml-6 md:ml-8 bg-gradient-to-r from-blue-500 to-pink-500">
               <span className="bg-colors-theme-black px-2 uppercase">
