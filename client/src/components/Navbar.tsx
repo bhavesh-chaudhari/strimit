@@ -6,7 +6,7 @@ import { getUserFromLocalStorage } from "../utils/localStorage";
 import { useLogout } from "../hooks/useAuth";
 import Image from "next/image";
 import { useAuth } from "../hooks/useAuth";
-import { useUser } from "../hooks/useUser";
+import { useCurrentUser } from "../hooks/useUser";
 
 const Navbar = (): JSX.Element => {
   const [show, setShow] = useState<boolean>(false);
@@ -15,7 +15,7 @@ const Navbar = (): JSX.Element => {
 
   const router = useRouter();
 
-  const { data } = useUser();
+  const { data } = useCurrentUser();
 
   const logout = useLogout();
 
@@ -128,8 +128,13 @@ const Navbar = (): JSX.Element => {
                           {link.name}
                         </button>
                       ) : (
-                        <Link scroll={true} href={link.path} passHref>
-                          <a className={styles["link"]}>{link.name}</a>
+                        <Link
+                          className={styles["link"]}
+                          scroll={true}
+                          href={link.path}
+                          passHref
+                        >
+                          {link.name}
                         </Link>
                       )}
                     </li>
@@ -137,8 +142,18 @@ const Navbar = (): JSX.Element => {
                 })
               : ""}
           </ul>
+          {/* {!isLoading && (
+            <Link
+              href={"/book-a-demo"}
+              className="relative p-[1px] max-w-max mb-3 md:mb-0 mt-6 md:mt-0 leading-none flex items-center md:justify-center ml-6 md:ml-8 bg-gray-400"
+            >
+              <span className="bg-green-500 p-1 px-2 uppercase">
+                Book a Demo
+              </span>
+            </Link>
+          )} */}
           {user?.role && !isLoading ? (
-            <span className="relative p-[1px] max-w-max mt-4 md:mt-0  flex items-center md:justify-center ml-6 md:ml-8 bg-gradient-to-r from-blue-500 to-pink-500">
+            <span className="relative p-[1px] max-w-max mt-6 md:mt-0  flex items-center md:justify-center ml-6 md:ml-8 bg-gradient-to-r from-blue-500 to-pink-500">
               <span className="bg-colors-theme-black px-2 uppercase">
                 {capitalizeFirstLetter(user?.role)}
               </span>

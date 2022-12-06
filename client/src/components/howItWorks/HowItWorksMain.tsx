@@ -6,12 +6,17 @@ import {VscWorkspaceTrusted} from "react-icons/vsc"
 import {AiOutlineStock} from "react-icons/ai"
 import {GiPayMoney} from "react-icons/gi"
 import { Pattern } from "../svgs";
+import Link from "next/link";
+import { useUserTokenInfo } from "../../hooks/useUser";
 
 const HowItWorksMain = () => {
+
+  const {id, role} = useUserTokenInfo()
+  
   return (
-    <div className="flex justify-center items-center pb-12">
+    <div className="flex justify-center items-center">
       <div className="w-[90%]">
-        <div className="mb-6 relative before:absolute before:-translate-x-1/2 before:-translate-y-[110%] before:left-1/2 before:w-[1px] before:h-44 before:bg-gradient-to-t before:from-blue-600 before:to-black">
+        <div className="mb-6 relative before:absolute before:-translate-x-1/2 before:-translate-y-[110%] before:left-1/2 before:w-[1px] before:h-52 md:before:h-44 before:bg-gradient-to-t before:from-blue-600 before:to-black">
           <h2 className="text-center text-3xl font-bold">
             Are you a streamer?
           </h2>
@@ -57,7 +62,7 @@ const HowItWorksMain = () => {
             </ul>
           </div>
           <div className={styles["cta"]}>
-            <a href="">Sign me Up</a>
+            {!id && <Link href="/signup">Sign me Up</Link>}
           </div>
         </div>
         <div className="mb-6 relative pt-40 before:absolute before:-translate-x-1/2 before:-translate-y-[110%] before:left-1/2 before:w-[1px] before:h-44 before:bg-gradient-to-t before:from-orange-600 before:to-black">
@@ -105,7 +110,7 @@ const HowItWorksMain = () => {
                 We have a dedicated segment of the audience who watch live
                 streams.
               </li>
-              <li>No work excpet uploading image/video files</li>
+              <li>No work except uploading image/video files</li>
               <li>You only pay when someone watches your ad.</li>
               <li>We guarantee a 100% impression of your ad to the viewer.</li>
               <li>Moreover it's only ₹1 per view count. </li>
@@ -113,7 +118,7 @@ const HowItWorksMain = () => {
             {/* <p className="text-sm">*T&C applied.</p> */}
           </div>
           <div className={styles["cta"]}>
-            <a href="">Advertise with us</a>
+            {!id && <Link href="/signup">Advertise with us</Link>}
           </div>
         </div>
       </div>

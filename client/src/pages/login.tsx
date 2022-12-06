@@ -6,9 +6,13 @@ import AuthMain from '../components/auth/AuthMain';
 const login: NextPage = () => {
   return (
     <>
-    <Head>
-      <title>Login - Live</title>
-    </Head>
+      <Head>
+        <title>Login - LIVE</title>
+        <meta
+          property="og:image"
+          content="https://liveads.stream/api/og?title=LOGIN&path=www.liveads.stream/login"
+        ></meta>
+      </Head>
       <AuthMain isSignUp={false}></AuthMain>
     </>
   );

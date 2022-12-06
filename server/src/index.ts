@@ -17,7 +17,7 @@ dotenv.config();
 // configure cors
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://www.liveads.stream",
     credentials: true,
   })
 );
@@ -34,11 +34,10 @@ app.use(limiter);
 
 // Routes
 app.get("/", (req, res) => {
-  res.status(StatusCodes.OK).json({ status: "ok" }); // test route
+  res.status(StatusCodes.OK).json({ status: "ok works" }); // test route
 });
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes)
-
 
 // read PORT from environment 
 const PORT = process.env.PORT || 5000;

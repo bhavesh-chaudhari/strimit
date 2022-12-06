@@ -158,14 +158,14 @@ const AuthForm = ({
                 <>
                   Already a user?{" "}
                   <Link href="/login" passHref>
-                    <a>Login here</a>
+                    Login here
                   </Link>
                 </>
               ) : (
                 <>
                   Don't have an account?{" "}
                   <Link href="/signup" passHref>
-                    <a>Signup here</a>
+                    Signup here
                   </Link>
                 </>
               )}
