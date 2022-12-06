@@ -3,6 +3,7 @@ import type { NextPage } from 'next'
 import Hero from '../components/Hero'
 import HowItWorksMain from '../components/howItWorks/HowItWorksMain'
 import Faq from '../components/Faq'
+import Newsletter from '../components/Newsletter'
 
 const Home: NextPage = () => {
   return (
@@ -33,6 +34,7 @@ const Home: NextPage = () => {
       </Head>
       <Hero></Hero>
       <HowItWorksMain></HowItWorksMain>
+      <Newsletter></Newsletter>
       {/* <Faq></Faq> */}
     </>
   );

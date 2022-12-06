@@ -14,7 +14,7 @@ const HowItWorksMain = () => {
   const {id, role} = useUserTokenInfo()
   
   return (
-    <div className="flex justify-center items-center pb-12">
+    <div className="flex justify-center items-center">
       <div className="w-[90%]">
         <div className="mb-6 relative before:absolute before:-translate-x-1/2 before:-translate-y-[110%] before:left-1/2 before:w-[1px] before:h-52 md:before:h-44 before:bg-gradient-to-t before:from-blue-600 before:to-black">
           <h2 className="text-center text-3xl font-bold">

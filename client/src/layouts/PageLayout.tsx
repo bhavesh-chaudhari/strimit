@@ -14,6 +14,7 @@ import {
 import Modal from "../components/Modal";
 import { PulseLoader, MoonLoader } from "react-spinners";
 import BookACall from "../components/BookACall"
+import Banner from "../components/Banner"
 
 interface Props {
   children?: React.ReactNode;
@@ -91,8 +92,9 @@ const PageLayout = ({ children }: Props): JSX.Element => {
             </div>
           </Modal>
         )}
+        <Banner></Banner>
         <Navbar></Navbar>
-        {/* <BookACall></BookACall> */}
+        <BookACall></BookACall>
         <div className={styles["layout"]}>{children}</div>
         {/* {noFooterPages.includes(currentPagePath) ? null : <Footer></Footer>} */}
         <CopyrightNotice></CopyrightNotice>
