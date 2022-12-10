@@ -92,8 +92,8 @@ const PageLayout = ({ children }: Props): JSX.Element => {
             </div>
           </Modal>
         )}
-        <Banner></Banner>
         <Navbar></Navbar>
+        <Banner></Banner>
         <BookACall></BookACall>
         <div className={styles["layout"]}>{children}</div>
         {/* {noFooterPages.includes(currentPagePath) ? null : <Footer></Footer>} */}

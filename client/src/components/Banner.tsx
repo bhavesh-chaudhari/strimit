@@ -12,14 +12,20 @@ const Banner = () => {
     }
     
   return (
-    <div className="bg-gradient-to-r relative from-blue-600 to-pink-600 flex justify-center items-center">
-      <Link className='flex px-6 items-center gap-2' href={"/offer"}>
-        <span className='font-bold'>Get limited time offer</span>
+    <div
+      // className="bg-gradient-to-r relative from-blue-600 to-pink-600 flex justify-center items-center"
+      className="bg-gray-700 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 relative flex justify-center items-center"
+    >
+      <Link className="flex px-6 items-center gap-2" href={"/offer"}>
+        <span className="font-bold">Get limited time offer</span>
         <span>
           <BsArrowRight></BsArrowRight>
         </span>
       </Link>
-      <span onClick={()=>setShow(false)} className='absolute right-4 top-1/2 cursor-pointer -translate-y-1/2'>
+      <span
+        onClick={() => setShow(false)}
+        className="absolute right-4 top-1/2 cursor-pointer -translate-y-1/2"
+      >
         <AiFillCloseCircle size={18}></AiFillCloseCircle>
       </span>
     </div>

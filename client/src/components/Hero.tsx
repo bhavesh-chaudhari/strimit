@@ -34,8 +34,6 @@ const Hero = (): JSX.Element => {
     setUser(getUserFromLocalStorage);
   }, [data]);
 
-  console.log(user)
-
   return (
     <div className="flex relative items-center overflow-hidden justify-center flex-col w-full">
       {/* <div className="absolute gradient w-[60%] h-24 md:h-32 z-0 -rotate-[10deg] -top-[5%] -left-[5%]"></div> */}

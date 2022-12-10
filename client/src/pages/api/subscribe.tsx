@@ -1,8 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 const getRequestParams = (email: string) => {
-  // console.log("getting request paramters")
-
   const API_KEY = process.env.MAILCHIMP_API_KEY;
   const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
 
@@ -31,9 +29,13 @@ const getRequestParams = (email: string) => {
 };
 
 const subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { email } = JSON.parse(req.body || null);
 
-  // console.log("email sent is: ", email)
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: `Method ${req.method} not allowed` });
+  }
+
+  // const { email } = JSON.parse(req.body || null);
+  const {email} = req.body
 
   if (!email || !email.length) {
     return res.status(400).json({
@@ -50,9 +52,15 @@ const subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
       body: JSON.stringify(data),
     });
 
-    // console.log(response)
+    const data1 = await response.json()
 
-    return res.status(201).json({ error: null });
+    console.log(data1)
+    
+    if (data1.status === 400) {
+      return res.status(201).json({message: "Already Subscribed"})
+    }
+
+    return res.status(200).json({ message: "Subscribed" });
   } catch (error) {
     return res.status(400).json({
       error:
