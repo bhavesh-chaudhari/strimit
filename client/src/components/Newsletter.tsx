@@ -4,6 +4,7 @@ import { useSubscribe } from "../hooks/useSubscibe";
 import { PulseLoader } from "react-spinners";
 import { IoMdCheckmark } from "react-icons/io";
 import clsx from "clsx";
+import Image from "next/image";
 
 const Newsletter = () => {
   const [email, setEmail] = useState<null | string>(null);
@@ -23,7 +24,7 @@ const Newsletter = () => {
   return (
     <div className="flex pt-40 items-center justify-center pb-40">
       <div className="w-[90%] flex flex-col justify-center items-center">
-        <div className="mb-6 relative before:absolute before:-translate-x-1/2 before:-translate-y-[110%] before:left-1/2 before:w-[1px] before:h-52 md:before:h-44 before:bg-gradient-to-t before:from-green-600 before:to-black">
+        <div className="mb-6 relative before:absolute before:-translate-x-1/2 before:-translate-y-[110%] before:left-1/2 before:w-[1px] before:h-0 md:before:h-0 before:bg-gradient-to-t before:from-green-600 before:to-black">
           <h2 className="text-center text-3xl font-bold">Newsletter</h2>
         </div>
         <div className="border-gray-500 max-w-xl mt-4 relative border p-4 rounded-md">
@@ -49,8 +50,7 @@ const Newsletter = () => {
             <button
               className={clsx(
                 "p-2 md:w-[30%] bg-green-500 rounded-sm outline-none cursor-pointer",
-                (data?.status === 200) &&
-                  "cursor-not-allowed"
+                data?.status === 200 && "cursor-not-allowed"
               )}
               disabled={data?.status === 200}
             >

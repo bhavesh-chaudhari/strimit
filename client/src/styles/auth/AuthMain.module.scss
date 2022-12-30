@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   min-height: calc(100vh - 105px);
-  padding: 2.5rem 0;
+  // padding: 2.5rem 0;
+  transform: translate(0, 4%);
   position: relative;
   z-index: 1;
   .content {

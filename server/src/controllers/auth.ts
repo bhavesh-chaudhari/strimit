@@ -101,6 +101,7 @@ export const googleLogin = async (req: Request, res: Response) => {
   try {
     const { tokens } = await oAuth2Client.getToken(req.body.code); // exchange code for tokens
 
+    // Authenticating the user involves obtaining an ID token and validating it.
     const user = jwtDecode((tokens as any).id_token) as any;
 
     const alreadyRegisteredUser = await User.findUnique({
@@ -155,10 +156,10 @@ export const googleLogin = async (req: Request, res: Response) => {
   }
 };
 
-export const refreshToken = (req: Request, res: Response) => {
-  try {
-  } catch (error) {}
-};
+// export const refreshToken = (req: Request, res: Response) => {
+//   try {
+//   } catch (error) {}
+// };
 
 export const checkAuth = (req: Request, res: Response) => {
   try {

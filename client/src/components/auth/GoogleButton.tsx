@@ -39,7 +39,7 @@ const GoogleButton = ({ formValues, isSignUp }: any) => {
           <span className={styles["icon"]}>
             <FcGoogle size={22}></FcGoogle>
           </span>
-          <span>Continue With Google</span>
+          <span >Continue With Google</span>
         </>
       )}
     </button>

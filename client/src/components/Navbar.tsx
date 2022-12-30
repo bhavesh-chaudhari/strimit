@@ -7,6 +7,8 @@ import { useLogout } from "../hooks/useAuth";
 import Image from "next/image";
 import { useAuth } from "../hooks/useAuth";
 import { useCurrentUser } from "../hooks/useUser";
+import { Strimit } from "./svgs";
+import clsx from "clsx";
 
 const Navbar = (): JSX.Element => {
   const [show, setShow] = useState<boolean>(false);
@@ -53,11 +55,11 @@ const Navbar = (): JSX.Element => {
       path: "/about",
       name: "About",
     },
-    {
-      id: 3,
-      path: "/calculator",
-      name: "Calculator",
-    },
+    // {
+    //   id: 3,
+    //   path: "/calculator",
+    //   name: "Calculator",
+    // },
     {
       id: 4,
       path: user?.id ? "" : "/signup",
@@ -79,16 +81,21 @@ const Navbar = (): JSX.Element => {
   }
 
   return (
-    <div className={styles["navbar-container"]}>
-      <nav className={styles["navbar"]}>
+    <div
+      className={clsx(
+        styles["navbar-container"],
+        "border-b bg-white",
+        "bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border-gray-200 z-50",
+        "w-screen"
+      )}
+    >
+      <nav className={clsx(styles["navbar"],
+      "w-[85%] md:w-[90%] xl:w-[80%]"
+      )}>
         <div className="mb-0 cursor-pointer w-[80px] md:w-[55px] h-[18px] relative flex -translate-x-3 md:transform-none items-center">
           <Link href="/">
             <div>
-              <Image
-                src={"/logos/live.svg"}
-                layout={"fill"}
-                alt={"Livestream.ads Logo"}
-              />
+              <Strimit width={100}></Strimit>
             </div>
           </Link>
         </div>
@@ -153,7 +160,7 @@ const Navbar = (): JSX.Element => {
             </Link>
           )} */}
           {user?.role && !isLoading ? (
-            <span className="relative p-[1px] max-w-max mt-6 md:mt-0  flex items-center md:justify-center ml-6 md:ml-8 bg-gradient-to-r from-blue-500 to-pink-500">
+            <span className="relative p-[1px] max-w-max mt-6 md:mt-0  flex items-center md:justify-center ml-6 md:ml-8 bg-gradient-to-r from-purple-500 to-pink-500">
               <span className="bg-colors-theme-black px-2 uppercase">
                 {capitalizeFirstLetter(user?.role)}
               </span>

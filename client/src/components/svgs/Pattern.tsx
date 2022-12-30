@@ -7,7 +7,7 @@ const SvgPattern = (props: SVGProps<SVGSVGElement>) => (
     role="img"
     {...props}
   >
-    <g strokeWidth={3.5} stroke="#4fc3f7" fill="none">
+    <g strokeWidth={3.5} stroke="#e879f9" fill="none">
       <path d="m0 0 54 54M54 0l54 54M108 0l54 54M216 0l-54 54M270 0l-54 54M270 0l54 54M378 0l-54 54M432 0l-54 54M432 0l54 54M486 0l54 54M540 0l54 54M594 0l54 54M648 0l54 54M756 0l-54 54M810 0l-54 54M810 0l54 54M864 0l54 54M918 0l54 54M1026 0l-54 54M1026 0l54 54M1080 0l54 54M1188 0l-54 54M1242 0l-54 54M1242 0l54 54M1296 0l54 54M1350 0l54 54M1458 0l-54 54" />
       <path
         opacity={0.94}

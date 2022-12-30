@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "../../styles/auth/AuthForm.module.scss";
-import formStyles from "../../styles/forms/Form.module.scss";
 import GoogleButton from "./GoogleButton";
 import Link from "next/link";
 import { useLogin, useSignup } from "../../hooks/useAuth";
@@ -34,7 +33,7 @@ const Fields = ({
           id="email"
           type="email"
           required
-          className="w-full text-white bg-gray-800 p-2 z-10 rounded-sm transition-all duration-300 border border-gray-500 outline-none focus:border-gray-300"
+          className="w-full p-2 z-10 rounded-md transition-all duration-300 border border-fuchsia-500 outline-none focus:border-fuchsia-300"
         />
       </div>
       <div className="w-full flex flex-col gap-2">
@@ -45,7 +44,7 @@ const Fields = ({
           id="password"
           type="password"
           required
-          className="w-full text-white bg-gray-800 p-2 z-10 rounded-sm transition-all duration-300 border border-gray-500 outline-none focus:border-gray-300"
+          className="w-full p-2 z-10 rounded-md transition-all duration-300 border border-fuchsia-500 outline-none focus:border-fuchsia-300"
         />
       </div>
     </>

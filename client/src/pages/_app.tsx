@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
+
   return (
     <QueryClientProvider client={queryClient}>
       <GoogleOAuthProvider

@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import ProductMain from "../components/ProductMain";
 
-const offer = () => {
+const product = () => {
   return (
-    <div>Coming Soon!</div>
-  )
-}
+    <div>
+      <ProductMain></ProductMain>
+    </div>
+  );
+};
 
-export default offer
+export default product;

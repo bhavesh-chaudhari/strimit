@@ -13,8 +13,9 @@ import {
 } from "../utils/localStorage";
 import Modal from "../components/Modal";
 import { PulseLoader, MoonLoader } from "react-spinners";
-import BookACall from "../components/BookACall"
-import Banner from "../components/Banner"
+import BookACall from "../components/BookACall";
+import Banner from "../components/Banner";
+import jwtDecode from "jwt-decode";
 
 interface Props {
   children?: React.ReactNode;
@@ -27,11 +28,7 @@ const PageLayout = ({ children }: Props): JSX.Element => {
 
   const { mutate: updateRole, isLoading } = useUpdateRole();
 
-  const { data} = useCurrentUser();
-
-  const currentPagePath = router.pathname;
-
-  const noFooterPages = ["/signup", "/login", "/streamer"];
+  const { data } = useCurrentUser();
 
   const protectedRoutes = ["/dashboard", "/streamer", "/advertiser"];
   const hiddenRoutes = ["/signup", "/login"];
@@ -41,10 +38,10 @@ const PageLayout = ({ children }: Props): JSX.Element => {
 
     if (!user?.role && user?.id) {
       setIsModalOpen(true);
-    } 
+    }
 
-    if(user?.role && user?.id){
-      setIsModalOpen(false)
+    if (user?.role && user?.id) {
+      setIsModalOpen(false);
     }
 
     if (user) {
@@ -92,9 +89,9 @@ const PageLayout = ({ children }: Props): JSX.Element => {
             </div>
           </Modal>
         )}
-        <Navbar></Navbar>
         <Banner></Banner>
-        <BookACall></BookACall>
+        <Navbar></Navbar>
+        {/* <BookACall></BookACall> */}
         <div className={styles["layout"]}>{children}</div>
         {/* {noFooterPages.includes(currentPagePath) ? null : <Footer></Footer>} */}
         <CopyrightNotice></CopyrightNotice>

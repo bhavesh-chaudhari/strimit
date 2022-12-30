@@ -44,7 +44,7 @@ export default function handler(req: NextRequest) {
             }}
           >
             <img
-              alt="Live"
+              alt="Strimit"
               height={70}
               src="https://www.liveads.stream/logos/live.svg"
               style={{ margin: "0 30px" }}
