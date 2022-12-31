@@ -16,6 +16,8 @@ const productCardData = [
       "Choose your favourite campaign and place the ad on your screen",
     ],
     textAlignment: "left" as textAlignment,
+    imgPath: "/favicons/android-chrome-512x512.png",
+    width: 250,
   },
   {
     id: 2,
@@ -29,6 +31,8 @@ const productCardData = [
       "Choose your favourite campaign and place the ad on your screen",
     ],
     textAlignment: "right" as textAlignment,
+    imgPath: "/images/platforms.png",
+    width: 500,
   },
   {
     id: 3,
@@ -42,6 +46,8 @@ const productCardData = [
       "Choose your favourite campaign and place the ad on your screen",
     ],
     textAlignment: "left" as textAlignment,
+    imgPath: "/images/3.png",
+    width: 460,
   },
   {
     id: 4,
@@ -55,6 +61,8 @@ const productCardData = [
       "Choose your favourite campaign and place the ad on your screen",
     ],
     textAlignment: "right" as textAlignment,
+    imgPath: "/images/2.webp",
+    width: 250,
   },
 ];
 

@@ -10,15 +10,16 @@ interface ProductCardProps {
   description: string;
   subtitle: string;
   points: string[];
-  image?: string;
+  imgPath: string;
   textAlignment: "left" | "right";
+  width: number
 }
 
 const ProductCard = (props: ProductCardProps) => {
-  const { title, description, subtitle, points, textAlignment } = props;
+  const { title, description, subtitle, points, textAlignment, imgPath, width } = props;
 
   return (
-    <div className="shadow-[0px_0px_22px_-10px_rgba(0,0,0,0.2)] text-lg rounded-lg w-[85%] max-w-[1250px] md:p-6 md:py-6 xl:p-12 xl:py-14">
+    <div className="shadow-[0px_0px_22px_-10px_rgba(0,0,0,0.2)] text-lg rounded-lg w-[85%] max-w-[1250px] 2xl:w-[100%] 2xl:max-w-[100%] md:p-6 md:py-6 xl:p-12 xl:py-14">
       <div
         className={clsx(
           "flex",
@@ -27,7 +28,12 @@ const ProductCard = (props: ProductCardProps) => {
           "md:items-start xl:items-center"
         )}
       >
-        <div className={clsx("w-[60%] md:p-4", textAlignment === "right" && "pl-10")}>
+        <div
+          className={clsx(
+            "w-[60%] md:p-4",
+            textAlignment === "right" && "pl-10"
+          )}
+        >
           <h2 className="md:text-2xl xl:text-4xl font-extrabold text-[#1d2e3b] mb-6">
             {title}
           </h2>
@@ -46,10 +52,15 @@ const ProductCard = (props: ProductCardProps) => {
             })}
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center w-[40%] p-4">
-          <div className="w-full">
-            {/* <Image></Image> */}
-            <div className="w-full h-56 bg-gray-100 rounded-md"></div>
+        <div className="flex flex-col justify-center items-center w-[40%] p-4 relative">
+          <div className="w-full flex justify-center items-center relative border shadow-sm shadow-fuchsia-200 rounded-xl overflow-hidden border-gray-50">
+            <Image
+              src={imgPath}
+              alt={"platforms supported by strimit.in"}
+              width={width}
+              height={60}
+            ></Image>
+            {/* <div className="w-full h-56 bg-gray-100 rounded-md"></div> */}
           </div>
           <div className="w-full flex flex-col items-center">
             <button className="bg-fuchsia-500 mt-5 mb-3 hover:bg-fuchsia-400 transition-all group gap-[1px] p-2 rounded-[4px] shadow-md font-bold  text-white border border-gray-200 w-full max-w-[250px] group-hover:text-slate-200 flex justify-center items-center">

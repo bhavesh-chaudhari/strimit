@@ -22,13 +22,18 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="flex pt-40 items-center justify-center pb-40">
-      <div className="w-[90%] flex flex-col justify-center items-center">
-        <div className="mb-6 relative before:absolute before:-translate-x-1/2 before:-translate-y-[110%] before:left-1/2 before:w-[1px] before:h-0 md:before:h-0 before:bg-gradient-to-t before:from-green-600 before:to-black">
+    <div className="flex items-center justify-center md:pb-40">
+      <div className="flex flex-col w-full">
+        {/* <div className="mb-6 relative before:absolute before:-translate-x-1/2 before:-translate-y-[110%] before:left-1/2 before:w-[1px] before:h-0 md:before:h-0 before:bg-gradient-to-t before:from-fuchsia-600 before:to-black">
           <h2 className="text-center text-3xl font-bold">Newsletter</h2>
+        </div> */}
+        <div className="relative mb-6 md:mb-8 before:from-fuchsia-400 before:to-orange-600">
+          <h2 className="text-3xl lg:text-5xl font-medium">
+            Newsletter
+          </h2>
         </div>
-        <div className="border-gray-500 max-w-xl mt-4 relative border p-4 rounded-md">
-          <span className="absolute flex items-center justify-center top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-white text-green-500 w-10 h-10 rounded-full">
+        <div className="border-purple-200 max-w-xl mt-4 relative border p-4 rounded-md">
+          <span className="absolute flex items-center justify-center top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-white text-fuchsia-500 w-10 h-10 rounded-full">
             <AiOutlineMail size={24}></AiOutlineMail>
           </span>
           <p className="mt-4">
@@ -39,7 +44,7 @@ const Newsletter = () => {
             onSubmit={handleSubmit}
           >
             <input
-              className="text-black outline-none focus:border-green-500 border-transparent transition-all duration-200 border-[2px] md:w-[70%] p-2 rounded-sm"
+              className="text-black outline-none border-fuchsia-200 focus:border-fuchsia-500 transition-all duration-200 border-[2px] md:w-[70%] p-2 rounded-sm"
               onChange={(e: any) => setEmail(e.target.value)}
               name="email"
               id="email"
@@ -49,7 +54,7 @@ const Newsletter = () => {
             />
             <button
               className={clsx(
-                "p-2 md:w-[30%] bg-green-500 rounded-sm outline-none cursor-pointer",
+                "p-2 md:w-[30%] bg-fuchsia-500 rounded-sm outline-none cursor-pointer",
                 data?.status === 200 && "cursor-not-allowed"
               )}
               disabled={data?.status === 200}
@@ -59,7 +64,7 @@ const Newsletter = () => {
                   <PulseLoader size={10} color="white"></PulseLoader>
                 </span>
               ) : (
-                <span className="flex leading-none justify-center items-center gap-1">
+                <span className="flex text-white leading-none justify-center items-center gap-1">
                   {data?.status === 200 ? (
                     <>
                       Subscribed{" "}
@@ -76,12 +81,12 @@ const Newsletter = () => {
           </form>
           <div className="mt-3">
             {data?.status === 201 ? (
-              <p className="text-green-400">Already Subscribed</p>
+              <p className="text-fuchsia-400">Already Subscribed</p>
             ) : null}
             {/* {data?.status === 200 ? (
               <p className="flex items-center gap-1">
                 Subscribed{" "}
-                <span className="text-green-500 flex">
+                <span className="text-fuchsia-500 flex">
                   <IoMdCheckmark size={20}></IoMdCheckmark>
                 </span>
               </p>

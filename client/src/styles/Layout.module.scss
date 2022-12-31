@@ -7,8 +7,9 @@
     min-height: calc(100vh - 100px);
 }
 
-@media screen and (min-width:1650px) {
+@media screen and (min-width:1600px) {
     .layout{
         max-width: 1600px;
+        width: 80%;
     }
 }

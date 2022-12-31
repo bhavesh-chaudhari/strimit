@@ -28,7 +28,7 @@ const StreamerForm = () => {
   return (
     <>
       <Head>
-        <title>Streamer's Form - LIVE</title>
+        <title>Streamer's Form - Strimit</title>
       </Head>
       <div>
         {loading && (

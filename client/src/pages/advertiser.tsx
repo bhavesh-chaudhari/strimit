@@ -27,7 +27,7 @@ const StreamerForm = () => {
   return (
     <>
       <Head>
-        <title>Advertiser's Form - LIVE</title>
+        <title>Advertiser's Form - Strimit</title>
       </Head>
       <div className={styles["container"]}>
         <div>

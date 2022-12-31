@@ -90,7 +90,7 @@ const Navbar = (): JSX.Element => {
       )}
     >
       <nav className={clsx(styles["navbar"],
-      "w-[85%] md:w-[90%] xl:w-[80%]"
+      "w-[85%] md:w-[90%] xl:w-[80%] 2xl:max-w-[1600px]"
       )}>
         <div className="mb-0 cursor-pointer w-[80px] md:w-[55px] h-[18px] relative flex -translate-x-3 md:transform-none items-center">
           <Link href="/">

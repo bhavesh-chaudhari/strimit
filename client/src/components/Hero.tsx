@@ -42,13 +42,13 @@ const Hero = (): JSX.Element => {
       <div className="absolute w-[280px] h-[60px] bg-gradient-to-r from-yellow-200 to-fuchsia-400 -top-28 md:hidden"></div>
       <div
         className={clsx(
-          "flex flex-col-reverse justify-start items-start md:flex-row relative md:justify-between md:items-center w-[88%] md:w-[90%] xl:w-[80%] -translate-y-[18%]",
-          "pt-[25%] md:pt-0"
+          "flex flex-col-reverse justify-start items-start md:flex-row relative md:justify-between md:items-center w-[90%] md:w-[90%] xl:w-[80%] 2xl:w-[100%] -translate-y-[18%]",
+          "pt-[15vh] md:pt-0"
         )}
       >
         <div className="md:translate-y-[5%] text-center md:text-left flex flex-col justify-center w-full md:w-max">
-          <div className="mb-8 flex justify-center md:block">
-            <Strimit className="w-[90%] md:w-[250px] lg:w-[300px] xl:w-[400px]"></Strimit>
+          <div className="mb-10 flex justify-center md:block">
+            <Strimit className="w-[90%] md:w-[250px] lg:w-[300px] xl:w-[400px] 2xl:w-[23vw]"></Strimit>
           </div>
           <div className="mb-6 md:mb-8 xl:mb-12">
             <h1 className="text-2xl md:text-3xl xl:text-6xl font-inter font-bold text-gray-800">
@@ -76,7 +76,7 @@ const Hero = (): JSX.Element => {
             </Link>
           </div>
         </div>
-        <div className="relative min-h-[300px] md:min-h-0  flex justify-center items-center w-[100%] md:w-[58%]">
+        <div className="relative min-h-[300px] md:min-h-0  flex justify-center items-center w-[100%] md:w-[58%] 2xl:scale-110">
           <div className="absolute w-full md:mt-[8%] md:right-[-10%] z-0">
             <Image
               src={"/images/hero-mockup-4.png"}

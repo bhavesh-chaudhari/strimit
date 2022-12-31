@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FadeLoader } from "react-spinners";
+import Head from "next/head";
 
 const calendar = () => {
 
@@ -24,6 +25,9 @@ const calendar = () => {
 
   return (
     <>
+      <Head>
+        <title>Book A Demo - Strimit</title>
+      </Head>
       <div className="flex justify-center h-[calc(100vh-105px)] overflow-hidden">
         <div>
           {loading && (
