@@ -33,7 +33,7 @@ const GoogleButton = ({ formValues, isSignUp }: any) => {
       onClick={googleLogin}
     >
       {isLoading ? (
-        <BeatLoader color="#1c1c1c" size={8}></BeatLoader>
+        <BeatLoader color="white" size={8}></BeatLoader>
       ) : (
         <>
           <span className={styles["icon"]}>

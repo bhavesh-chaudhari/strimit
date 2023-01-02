@@ -37,7 +37,7 @@ const StreamerForm = () => {
       <div>
         {loading && (
           <div className="justify-center bg-red-300 flex items-center min-h-[calc(0px)]">
-            <FadeLoader color="white" width={5} height={30}></FadeLoader>
+            <FadeLoader color="#d946ef" width={5} height={30}></FadeLoader>
           </div>
         )}
       </div>

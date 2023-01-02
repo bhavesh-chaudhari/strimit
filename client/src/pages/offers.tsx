@@ -16,7 +16,7 @@ const product = () => {
       <div className="flex flex-col">
         <ProductMain></ProductMain>
         <div className="flex items-center justify-center mb-8 md:mb-16" >
-          <Link className="bg-white text-fuchsia-600 shadow-md border text-xl hover:text-fuchsia-700 hover:scale-110 transition-all duration-200 border-gray-200 rounded-md px-12 py-4" href="/contact">Pre-Book Now</Link>
+          <Link className="bg-white text-fuchsia-600 shadow-md border text-xl hover:text-fuchsia-700 hover:scale-110 transition-all duration-200 border-gray-200 rounded-md px-12 py-4" href="/signup">Pre-Book Now</Link>
         </div>
       </div>
     </>

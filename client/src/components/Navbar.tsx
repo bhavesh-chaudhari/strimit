@@ -55,6 +55,11 @@ const Navbar = (): JSX.Element => {
       path: "/about",
       name: "About",
     },
+    {
+      id: 3,
+      path: "/offers",
+      name: "Pre book Studio",
+    },
     // {
     //   id: 3,
     //   path: "/calculator",

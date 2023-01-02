@@ -15,18 +15,20 @@ const contact = () => {
           content="https://strimit.in/api/og?title=Contact&path=www.strimit.in/contact"
         ></meta>
       </Head>
-      <div className="flex justify-center items-center pt-[130px] md:pt-12 flex-col py-12">
-        <div className="border p-8 rounded-md w-[90%] md:w-max">
-          <h1 className="text-4xl mb-6">
+      <div className="flex relative justify-center z-[5] items-center pt-[130px] md:pt-12 flex-col py-12">
+        <div className="border relative p-8 z-[10] rounded-md w-[90%] md:w-max">
+          <h1 className="text-4xl mb-6 z-[5] text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 to-yellow-400">
             Thank you for connecting with strimit
           </h1>
           {id && (
             <p className="text-2xl mb-6">Our team will contact you shortly</p>
           )}
           <p>
-            For queries, reach out to us at{" "}
-            <a className="text-fuchsia-600" href="mailto:support@strimit.in">
-              support@strimit.in
+            {id
+              ? " Please look out for a mail from"
+              : "For queries, contact us at"}{" "}
+            <a className="text-fuchsia-600" href="mailto:team@strimit.in">
+              team@strimit.in
             </a>
           </p>
         </div>

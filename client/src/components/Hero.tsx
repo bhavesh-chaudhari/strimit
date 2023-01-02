@@ -8,6 +8,13 @@ import { useCurrentUser } from "../hooks/useUser";
 import AuthForm from "./auth/AuthForm";
 import { Strimit } from "./svgs";
 import clsx from "clsx";
+import dynamic from "next/dynamic";
+
+const MediaQuery = dynamic(()=>{
+  return import("react-responsive")
+}, {
+  ssr: false
+})
 
 const Hero = ({imageData}: any): JSX.Element => {
 
@@ -48,52 +55,125 @@ const Hero = ({imageData}: any): JSX.Element => {
         )}
       >
         <div className="md:translate-y-[5%] text-center md:text-left flex flex-col justify-center w-full md:w-max">
-          <div className="mb-10 flex justify-center md:block">
-            <Strimit className="w-[90%] max-w-[300px] md:max-w-none md:w-[250px] lg:w-[300px] xl:w-[400px] 2xl:w-[23vw]"></Strimit>
-          </div>
-          <div className="mb-6 md:mb-8 xl:mb-12">
-            <h1 className="text-2xl md:text-3xl xl:text-6xl font-inter font-bold text-gray-800">
-              Monetize Live <br className="hidden sm:flex" /> Streams
-            </h1>
-          </div>
-          <div className="flex gap-4 w-full justify-center md:w-max">
-            {
-              <>
-                {" "}
-                <Link
-                  href={"/offers"}
-                  className={clsx(
-                    "bg-white transition-all hover:text-fuchsia-400 duration-200 text-fuchsia-600 border border-fuchsia-100 xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-12 text-2xl",
-                    "text-md px-6 py-2"
-                  )}
-                >
-                  Pre Book
-                </Link>
-                {!loading && !user?.id ? (
+          <MediaQuery minWidth={768}>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="700"
+              className="mb-10 flex justify-center md:block"
+            >
+              <Strimit className="w-[90%] max-w-[300px] md:max-w-none md:w-[250px] lg:w-[300px] xl:w-[400px] 2xl:w-[23vw]"></Strimit>
+            </div>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="900"
+              className="mb-6 md:mb-8 xl:mb-12"
+            >
+              <h1 className="text-2xl md:text-3xl xl:text-6xl font-inter font-bold text-gray-800">
+                Monetize Live <br className="hidden sm:flex" /> Streams
+              </h1>
+            </div>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1100"
+              className="flex gap-4 w-full justify-center md:w-max"
+            >
+              {
+                <>
+                  {" "}
                   <Link
-                    href={"/signup"}
+                    href={"/offers"}
                     className={clsx(
-                      "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
+                      "bg-white transition-all hover:text-fuchsia-400 duration-200 text-fuchsia-600 border border-fuchsia-100 xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-12 text-2xl",
                       "text-md px-6 py-2"
                     )}
                   >
-                    Signup
+                    Pre Book
                   </Link>
-                ) : (
-                  // <Link
-                  //   href={"/contact"}
-                  //   className={clsx(
-                  //     "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
-                  //     "text-md px-6 py-2"
-                  //   )}
-                  // >
-                  //   Contact
-                  // </Link>
-                  ""
-                )}
-              </>
-            }
-          </div>
+                  {!loading && !user?.id ? (
+                    <Link
+                      href={"/signup"}
+                      className={clsx(
+                        "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
+                        "text-md px-6 py-2"
+                      )}
+                    >
+                      Signup
+                    </Link>
+                  ) : (
+                    // <Link
+                    //   href={"/contact"}
+                    //   className={clsx(
+                    //     "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
+                    //     "text-md px-6 py-2"
+                    //   )}
+                    // >
+                    //   Contact
+                    // </Link>
+                    ""
+                  )}
+                </>
+              }
+            </div>
+          </MediaQuery>
+          <MediaQuery maxWidth={767}>
+            <div
+              data-aos="fade-down"
+              data-aos-duration="700"
+              className="mb-10 flex justify-center md:block"
+            >
+              <Strimit className="w-[90%] max-w-[300px] md:max-w-none md:w-[250px] lg:w-[300px] xl:w-[400px] 2xl:w-[23vw]"></Strimit>
+            </div>
+            <div
+              data-aos="fade-down"
+              data-aos-duration="900"
+              className="mb-6 md:mb-8 xl:mb-12"
+            >
+              <h1 className="text-2xl md:text-3xl xl:text-6xl font-inter font-bold text-gray-800">
+                Monetize Live <br className="hidden sm:flex" /> Streams
+              </h1>
+            </div>
+            <div
+              data-aos-duration="1100"
+              className="flex gap-4 w-full justify-center md:w-max"
+            >
+              {
+                <>
+                  {" "}
+                  <Link
+                    href={"/offers"}
+                    className={clsx(
+                      "bg-white transition-all hover:text-fuchsia-400 duration-200 text-fuchsia-600 border border-fuchsia-100 xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-12 text-2xl",
+                      "text-md px-6 py-2"
+                    )}
+                  >
+                    Pre Book
+                  </Link>
+                  {!loading && !user?.id ? (
+                    <Link
+                      href={"/signup"}
+                      className={clsx(
+                        "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
+                        "text-md px-6 py-2"
+                      )}
+                    >
+                      Signup
+                    </Link>
+                  ) : (
+                    // <Link
+                    //   href={"/contact"}
+                    //   className={clsx(
+                    //     "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
+                    //     "text-md px-6 py-2"
+                    //   )}
+                    // >
+                    //   Contact
+                    // </Link>
+                    ""
+                  )}
+                </>
+              }
+            </div>
+          </MediaQuery>
         </div>
         <div className="relative min-h-[300px] md:min-h-0  flex justify-center items-center w-[100%] md:w-[58%] 2xl:scale-110">
           <div className="absolute overflow-hidden max-w-[350px] md:max-w-none w-full md:mt-[8%] md:right-[-10%] z-0">

@@ -134,7 +134,14 @@ const HowItWorksMain = ({imageData}: any) => {
                   <Newsletter></Newsletter>
                 </div>
                 <div className="md:pb-36 flex justify-center md:justify-start">
-                  <Link className="text-2xl transition-all bg-fuchsia-500 px-4 text-white py-2 rounded-sm" href={"/contact"}>Pre-Book Studio Now</Link>
+                  {!id && (
+                    <Link
+                      className="text-xl shadow-md transition-all bg-fuchsia-500 px-4 text-white py-2 rounded-sm"
+                      href={"/signup"}
+                    >
+                      Pre-Book Studio Now
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
