@@ -161,7 +161,7 @@ const Navbar = (): JSX.Element => {
           )} */}
           {user?.role && !isLoading ? (
             <span className="relative p-[1px] max-w-max mt-6 md:mt-0  flex items-center md:justify-center ml-6 md:ml-8 bg-gradient-to-r from-purple-500 to-pink-500">
-              <span className="bg-colors-theme-black px-2 uppercase">
+              <span className="bg-white px-2 uppercase">
                 {capitalizeFirstLetter(user?.role)}
               </span>
             </span>

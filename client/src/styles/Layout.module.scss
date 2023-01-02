@@ -5,6 +5,20 @@
     flex-direction: column;
     margin: 0 auto;
     min-height: calc(100vh - 100px);
+    height: 100%;
+}
+
+@media screen and (min-width:768px) {
+    .layout{
+        min-height: calc(100vh - 140px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .layout{
+        min-height: calc(100vh - 40px);
+    }
+    
 }
 
 @media screen and (min-width:1600px) {

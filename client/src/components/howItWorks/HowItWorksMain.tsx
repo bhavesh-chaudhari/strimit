@@ -12,7 +12,8 @@ import Image from "next/image";
 import clsx from "clsx";
 import Newsletter from "../Newsletter";
 
-const HowItWorksMain = () => {
+const HowItWorksMain = ({imageData}: any) => {
+
   const { id, role } = useUserTokenInfo();
 
   return (
@@ -28,7 +29,7 @@ const HowItWorksMain = () => {
               src={"/images/signup-mockup.png"}
               draggable={"false"}
             ></Image>
-            <div className="absolute bg-gradient-to-l z-0 rotate-[70deg] blur-[150px] top-[20%] from-fuchsia-200 to-yellow-100 w-[400px] h-[200px] md:h-[30vh]"></div>
+            <div className="absolute bg-gradient-to-l z-0 rotate-[70deg] blur-[150px] top-[20%] from-fuchsia-200 to-yellow-100 w-[400px] h-[170px] md:h-[30vh]"></div>
             <Link
               href={"/signup"}
               className="absolute rotate-[-23deg] rounded-xl rounded-tr-3xl bg-transparent w-[32%] cursor-pointer h-[80%] z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -81,14 +82,16 @@ const HowItWorksMain = () => {
                           advertise on your stream.
                         </span>
                       </p>
-                      <div
-                        className={clsx(
-                          "bg-white w-max transition-all shadow-sm shadow-fuchsia-300 hover:text-fuchsia-700 duration-200 text-fuchsia-600 border border-fuchsia-100 p-2 rounded-full px-8 text-2xl",
-                          "relative z-0"
-                        )}
-                      >
-                        {!id && <Link href="/signup">Pre Book Now</Link>}
-                      </div>
+                      {!id && (
+                        <div
+                          className={clsx(
+                            "bg-white w-max transition-all shadow-sm shadow-fuchsia-300 hover:text-fuchsia-700 duration-200 text-fuchsia-600 border border-fuchsia-100 p-2 rounded-full px-8 text-2xl",
+                            "relative z-0"
+                          )}
+                        >
+                          {!id && <Link href="/signup">Pre Book Now</Link>}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -111,23 +114,27 @@ const HowItWorksMain = () => {
                         <span className="text-4xl text-fuchsia-600 font-bold">
                           Pay
                         </span>{" "}
-                        only for the audience who viewed your ad, get
-                        complete insights about your published ads on your
-                        dashboard.
+                        only for the audience who viewed your ad, get complete
+                        insights about your published ads on your dashboard.
                       </p>
-                      <div
-                        className={clsx(
-                          "bg-white w-max transition-all shadow-sm shadow-fuchsia-300 hover:text-fuchsia-700 duration-200 text-fuchsia-600 border border-fuchsia-100 p-2 rounded-full px-8 text-2xl",
-                          "relative z-0"
-                        )}
-                      >
-                        {!id && <Link href="/signup">Signup</Link>}
-                      </div>
+                      {!id && (
+                        <div
+                          className={clsx(
+                            "bg-white w-max transition-all shadow-sm shadow-fuchsia-300 hover:text-fuchsia-700 duration-200 text-fuchsia-600 border border-fuchsia-100 p-2 rounded-full px-8 text-2xl",
+                            "relative z-0"
+                          )}
+                        >
+                          {!id && <Link href="/signup">Signup</Link>}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
                 <div>
                   <Newsletter></Newsletter>
+                </div>
+                <div className="md:pb-36 flex justify-center md:justify-start">
+                  <Link className="text-2xl transition-all bg-fuchsia-500 px-4 text-white py-2 rounded-sm" href={"/contact"}>Pre-Book Studio Now</Link>
                 </div>
               </div>
             </div>

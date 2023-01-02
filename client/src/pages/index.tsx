@@ -2,10 +2,13 @@ import Head from 'next/head'
 import type { NextPage } from 'next'
 import Hero from '../components/Hero'
 import HowItWorksMain from '../components/howItWorks/HowItWorksMain'
-import Faq from '../components/Faq'
-// import Newsletter from '../components/Newsletter'
+import { returnProps } from '../utils/imageMetadata'
+import path from "path"
 
-const Home: NextPage = () => {
+const Home: NextPage = (props) => {
+
+  const {thumbnails} = props as any
+
   return (
     <>
       <Head>
@@ -30,7 +33,7 @@ const Home: NextPage = () => {
         ></meta>
         <meta
           property="og:image"
-          content="https://drive.google.com/uc?id=1e-KE7QEvhUWcI1lpuFCm802R4ZnOp1pc"
+          content="https://drive.google.com/uc?id=1_yNQLtKiqwuCN01njFPiaKdfygD2ViTm"
         ></meta>
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.strimit.in/" />
@@ -41,15 +44,35 @@ const Home: NextPage = () => {
         />
         <meta
           property="twitter:image"
-          content="https://drive.google.com/uc?id=1e-KE7QEvhUWcI1lpuFCm802R4ZnOp1pc"
+          content="https://drive.google.com/uc?id=1_yNQLtKiqwuCN01njFPiaKdfygD2ViTm"
         ></meta>
       </Head>
-      <Hero></Hero>
-      <HowItWorksMain></HowItWorksMain>
-      {/* <Newsletter></Newsletter> */}
-      {/* <Faq></Faq> */}
+      <Hero imageData={thumbnails[0]} ></Hero>
+      <HowItWorksMain imageData={thumbnails[1]} ></HowItWorksMain>
     </>
   );
 }
 
 export default Home
+
+export const getStaticProps = async ()=>{
+
+  const imagePaths = ["/images/hero-mockup-7.png", "/images/signup-mockup.png"];
+  
+  // Pass the image to plaiceholder
+  const imageData = await Promise.all(
+    imagePaths.map(async (imagePath) => {
+      return await returnProps(imagePath);
+    })
+  );
+
+  console.log(imageData)
+
+  return {
+    props: {
+      // This data will then be used by <Image> in our frontEnd
+      thumbnails: imageData
+    },
+  };
+  
+}

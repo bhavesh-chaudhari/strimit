@@ -10,7 +10,7 @@ const login: NextPage = () => {
         <title>Login - Strimit</title>
         <meta
           property="og:image"
-          content="https://liveads.stream/api/og?title=LOGIN&path=www.liveads.stream/login"
+          content="https://strimit.in/api/og?title=LOGIN&path=www.strimit.in/login"
         ></meta>
       </Head>
       <AuthMain isSignUp={false}></AuthMain>

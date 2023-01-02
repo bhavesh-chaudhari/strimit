@@ -78,13 +78,13 @@ export const useLogin = () => {
         toast("Logged In", {
           type: "success",
           position: "bottom-right",
-          theme: "dark",
+          theme: "light",
         });
       } else {
         toast("Invalid Credentials", {
           type: "error",
           position: "top-center",
-          theme: "dark",
+          theme: "light",
           style: {
             marginTop: "2rem",
           },
@@ -116,7 +116,7 @@ export const useSignup = () => {
         toast("Signed Up Successfully", {
           type: "success",
           position: "top-right",
-          theme: "dark",
+          theme: "light",
           style: {
             marginTop: "5rem",
           },
@@ -128,7 +128,7 @@ export const useSignup = () => {
         toast("User Already Exists", {
           type: "error",
           position: "top-center",
-          theme: "dark",
+          theme: "light",
           style: {
             marginTop: "2rem",
           },
@@ -138,7 +138,7 @@ export const useSignup = () => {
         toast("A problem has occured. Please try again later.", {
           type: "error",
           position: "top-center",
-          theme: "dark",
+          theme: "light",
           style: {
             marginTop: "2rem",
           },
@@ -171,7 +171,7 @@ export const useGoogleCodeLoginRQHook = () => {
         toast("Signed In", {
           type: "success",
           position: "bottom-right",
-          theme: "dark",
+          theme: "light",
         });
       }
     },
@@ -188,7 +188,7 @@ export const useLogout = () => {
     toast("Logged Out Successfully", {
       type: "success",
       position: "bottom-right",
-      theme: "dark",
+      theme: "light",
       style: {
         marginTop: "5rem",
       },

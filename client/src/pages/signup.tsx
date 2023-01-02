@@ -7,10 +7,10 @@ const signup: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Signup - LIVE</title>
+        <title>Signup - Strimit</title>
         <meta
           property="og:image"
-          content="https://liveads.stream/api/og?title=Signup&path=www.liveads.stream/signup"
+          content="https://strimit.in/api/og?title=Signup&path=www.strimit.in/signup"
         ></meta>
       </Head>
       <AuthMain isSignUp={true}></AuthMain>

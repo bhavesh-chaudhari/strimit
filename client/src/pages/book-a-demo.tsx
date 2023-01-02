@@ -27,6 +27,10 @@ const calendar = () => {
     <>
       <Head>
         <title>Book A Demo - Strimit</title>
+        <meta
+          property="og:image"
+          content="https://strimit.in/api/og?title=Book%20A%20Demo&path=www.strimit.in/login"
+        ></meta>
       </Head>
       <div className="flex justify-center h-[calc(100vh-105px)] overflow-hidden">
         <div>

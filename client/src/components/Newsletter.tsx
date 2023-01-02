@@ -22,7 +22,7 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="flex items-center justify-center md:pb-40">
+    <div className="flex items-center justify-center">
       <div className="flex flex-col w-full">
         {/* <div className="mb-6 relative before:absolute before:-translate-x-1/2 before:-translate-y-[110%] before:left-1/2 before:w-[1px] before:h-0 md:before:h-0 before:bg-gradient-to-t before:from-fuchsia-600 before:to-black">
           <h2 className="text-center text-3xl font-bold">Newsletter</h2>

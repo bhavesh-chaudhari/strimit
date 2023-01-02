@@ -37,7 +37,7 @@ const PrivateRoute = ({ protectedRoutes, hiddenRoutes, children }: Props) => {
         toast("Already Logged In", {
           type: "info",
           position: "bottom-right",
-          theme: "dark",
+          theme: "light",
         });
       }
     };
