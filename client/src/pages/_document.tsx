@@ -12,7 +12,7 @@ const document = () => {
           crossOrigin={"true"}
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:ital,wght@0,400;0,700;1,600&display=swap"
           rel="stylesheet"
         />
 

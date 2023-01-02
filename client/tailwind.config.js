@@ -17,6 +17,10 @@ module.exports = {
           modal: "rgb(0 0 0/0.7)",
         },
       },
+      fontFamily: {
+        inter: ["'Inter'", "sans-serif"],
+        montserrat: ["'Montserrat'", "sans-serif"],
+      },
       keyframes: {
         firstGradient: {
           "0%, 25%": {

@@ -10,7 +10,7 @@ const SvgDottedBg = (props: SVGProps<SVGSVGElement>) => (
     role="img"
     {...props}
   >
-    <g stroke="none" fill="#03a9f4">
+    <g stroke="none" fill="#e879f9">
       <circle r={1.132} />
       <circle r={1.132} cx={66.667} />
       <circle r={1.132} cx={133.333} />

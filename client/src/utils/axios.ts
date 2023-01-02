@@ -5,6 +5,7 @@ import { getUserFromLocalStorage } from "./localStorage";
 const client = axios.create({ baseURL: API_BASE_URL });
 
 export const request = ({ ...options }: AxiosRequestConfig) => {
+
   const user = getUserFromLocalStorage();
 
   client.defaults.headers.common.Authorization = `Bearer ${user?.token}`;

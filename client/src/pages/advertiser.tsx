@@ -27,13 +27,13 @@ const StreamerForm = () => {
   return (
     <>
       <Head>
-        <title>Advertiser's Form - LIVE</title>
+        <title>Advertiser's Form - Strimit</title>
       </Head>
       <div className={styles["container"]}>
         <div>
           {loading && (
             <div className="justify-center flex items-center w-full h-full absolute">
-              <FadeLoader color="white" width={5} height={30}></FadeLoader>
+              <FadeLoader color="#d946ef" width={5} height={30}></FadeLoader>
             </div>
           )}
         </div>

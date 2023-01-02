@@ -28,9 +28,10 @@ const AuthMain = ({isSignUp}: {isSignUp: boolean}) => {
       <div className={styles["container"]}>
         <div className={styles["content"]}>
           <div className="">
-            <h1 className="text-2xl font-bold md:text-3xl mb-4  md:mb-8">
-              {isSignUp ? "Sign Up" : "Login"}
-              {isSignUp && formValues.role ? ` as ${capitalizeFirstLetter(formValues?.role as string)}` : " to LIVE"}
+            <h1 className="text-2xl text-fuchsia-500 font-inter font-medium md:text-3xl mb-4  md:mb-8">
+              {isSignUp ? "Sign up" : "Login"}
+              {/* {isSignUp && formValues.role ? ` as ${capitalizeFirstLetter(formValues?.role as string)}` : " to strimit"} */}
+              {isSignUp && formValues.role ? ` as ${formValues?.role}`: " to strimit"}
             </h1>
           </div>
           <div className={styles["form"]}>

@@ -1,23 +1,34 @@
 import React, { useRef, useEffect, useState } from "react";
 import styles from "../styles/Hero.module.scss";
-import { HeroBg1 } from "./svgs";
+// import { HeroBg1 } from "./svgs";
 import Link from "next/link";
 import Image from "next/image";
 import { getUserFromLocalStorage } from "../utils/localStorage";
 import { useCurrentUser } from "../hooks/useUser";
+import AuthForm from "./auth/AuthForm";
+import { Strimit } from "./svgs";
+import clsx from "clsx";
+import dynamic from "next/dynamic";
 
-const Hero = (): JSX.Element => {
+const MediaQuery = dynamic(()=>{
+  return import("react-responsive")
+}, {
+  ssr: false
+})
+
+const Hero = ({imageData}: any): JSX.Element => {
+
   const containerRef = useRef<any>(null);
   const [user, setUser] = useState<any>(null);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   const { data } = useCurrentUser();
 
   useEffect(() => {
     const handleResize = () => {
       const deviceWidth = window.matchMedia("(max-width: 768px)");
-      containerRef.current.style.minHeight =
-        (window as any).innerHeight - 65 + "px";
+      // containerRef.current.style.minHeight =
+      //   (window as any).innerHeight - 65 + "px";
     };
 
     window.addEventListener("resize", handleResize);
@@ -30,94 +41,150 @@ const Hero = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    setLoading(false)
+    setLoading(false);
     setUser(getUserFromLocalStorage);
   }, [data]);
 
-  console.log(user)
-
   return (
-    <div className="flex relative items-center overflow-hidden justify-center flex-col w-full">
-      {/* <div className="absolute gradient w-[60%] h-24 md:h-32 z-0 -rotate-[10deg] -top-[5%] -left-[5%]"></div> */}
+    <div className="min-h-[calc(100vh-100px)] pt-[100px] md:pt-0 md:min-h-0  md:mt-[15%] md:mb-10 lg:mt-0 lg:mb-0 lg:min-h-[calc(100vh-100px)] relative flex flex-col justify-center items-center">
+      <div className="absolute w-[280px] h-[60px] bg-gradient-to-r from-yellow-200 to-fuchsia-400 -top-28 md:hidden"></div>
       <div
-        ref={containerRef}
-        className="overflow-hidden relative min-h-[calc(100vh-65px)] flex flex-col items-center pt-32 md:pt-[25vh] 2xl:pt-[30vh]"
+        className={clsx(
+          "flex flex-col-reverse justify-start items-start md:flex-row relative md:justify-between md:items-center w-[90%] md:w-[90%] xl:w-[80%] 2xl:w-[100%] -translate-y-[18%]",
+          "pt-[15vh] md:pt-0"
+        )}
       >
-        <div className="md:-translate-y-8 flex flex-col items-center">
-          <div className="w-full mb-8 flex flex-col items-center">
-            <div className="mb-2 md:mb-6 2xl:mb-8 w-[100px] md:w-[150px] h-[60px] 2xl:w-[180px] relative flex justify-center items-center">
-              <Image
-                src={"/logos/live.svg"}
-                layout={"fill"}
-                alt={"Livestream.ads Logo"}
-              ></Image>
+        <div className="md:translate-y-[5%] text-center md:text-left flex flex-col justify-center w-full md:w-max">
+          <MediaQuery minWidth={768}>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="700"
+              className="mb-10 flex justify-center md:block"
+            >
+              <Strimit className="w-[90%] max-w-[300px] md:max-w-none md:w-[250px] lg:w-[300px] xl:w-[400px] 2xl:w-[23vw]"></Strimit>
             </div>
-            <h2 className="text-center mb-6 text-2xl md:text-3xl 2xl:text-4xl">
-              Advertise your live streams
-            </h2>
-            <div className="flex gap-2 text-3xl md:text-4xl xl:text-6xl 2xl:text-7xl">
-              <div className="flex flex-wrap px-2 gap-2 justify-center items-center w-full">
-                <span className="relative leading-[1] block before:animate-[firstWhiteText_6s_infinite] before:leading-[1] before:content-['0%_Commissions.'] before:inline-block before:text-center before:absolute before:text-white before:pointer-events-none before:w-full font-bold">
-                  <span className="bg-gradient-to-r text-center inline-block  animate-[firstGradient_6s_infinite] from-green-500 to-blue-500 text-transparent bg-clip-text">
-                    0% Commissions.
-                  </span>
-                </span>
-                <span className="relative leading-[1] block before:animate-[secondWhiteText_6s_infinite] before:leading-[1] before:content-['100%_Impressions.'] before:inline-block before:text-center before:absolute before:text-white before:pointer-events-none before:w-full font-bold">
-                  <span className="bg-gradient-to-r text-center inline-block animate-[secondGradient_6s_infinite] from-orange-500 to-pink-500 text-transparent bg-clip-text">
-                    100% Impressions.
-                  </span>
-                </span>
-              </div>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="900"
+              className="mb-6 md:mb-8 xl:mb-12"
+            >
+              <h1 className="text-2xl md:text-3xl xl:text-6xl font-inter font-bold text-gray-800">
+                Monetize Live <br className="hidden sm:flex" /> Streams
+              </h1>
             </div>
-          </div>
-          <div className="gap-5 max-w-max flex justify-center">
-            {loading ? (
-              ""
-            ) : (
-              <>
-                {!user?.id ? (
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1100"
+              className="flex gap-4 w-full justify-center md:w-max"
+            >
+              {
+                <>
+                  {" "}
                   <Link
-                    className="bg-blue-600 hover:bg-blue-500 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-2 px-5 md:px-6 2xl:text-2xl md:text-xl text-md rounded-md"
-                    href={"/signup"}
-                    passHref
+                    href={"/offers"}
+                    className={clsx(
+                      "bg-white transition-all hover:text-fuchsia-400 duration-200 text-fuchsia-600 border border-fuchsia-100 xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-12 text-2xl",
+                      "text-md px-6 py-2"
+                    )}
                   >
-                    Signup Now
+                    Pre Book
                   </Link>
-                ) : (
-                  ""
-                )}
-                {user?.id && user.role === "streamer" ? (
+                  {!loading && !user?.id ? (
+                    <Link
+                      href={"/signup"}
+                      className={clsx(
+                        "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
+                        "text-md px-6 py-2"
+                      )}
+                    >
+                      Signup
+                    </Link>
+                  ) : (
+                    // <Link
+                    //   href={"/contact"}
+                    //   className={clsx(
+                    //     "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
+                    //     "text-md px-6 py-2"
+                    //   )}
+                    // >
+                    //   Contact
+                    // </Link>
+                    ""
+                  )}
+                </>
+              }
+            </div>
+          </MediaQuery>
+          <MediaQuery maxWidth={767}>
+            <div
+              data-aos="fade-down"
+              data-aos-duration="700"
+              className="mb-10 flex justify-center md:block"
+            >
+              <Strimit className="w-[90%] max-w-[300px] md:max-w-none md:w-[250px] lg:w-[300px] xl:w-[400px] 2xl:w-[23vw]"></Strimit>
+            </div>
+            <div
+              data-aos="fade-down"
+              data-aos-duration="900"
+              className="mb-6 md:mb-8 xl:mb-12"
+            >
+              <h1 className="text-2xl md:text-3xl xl:text-6xl font-inter font-bold text-gray-800">
+                Monetize Live <br className="hidden sm:flex" /> Streams
+              </h1>
+            </div>
+            <div
+              data-aos-duration="1100"
+              className="flex gap-4 w-full justify-center md:w-max"
+            >
+              {
+                <>
+                  {" "}
                   <Link
-                    className="bg-blue-600 hover:bg-blue-500 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-2 px-5 md:px-6 2xl:text-2xl md:text-xl text-md rounded-md"
-                    href={"/streamer"}
-                    passHref
+                    href={"/offers"}
+                    className={clsx(
+                      "bg-white transition-all hover:text-fuchsia-400 duration-200 text-fuchsia-600 border border-fuchsia-100 xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-12 text-2xl",
+                      "text-md px-6 py-2"
+                    )}
                   >
-                    Streamer QnA
+                    Pre Book
                   </Link>
-                ) : (
-                  ""
-                )}
-                {user?.id && user.role === "advertiser" ? (
-                  <Link
-                    className="bg-blue-600 hover:bg-blue-500 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-2 px-5 md:px-6 2xl:text-2xl md:text-xl text-md rounded-md"
-                    href={"/advertiser"}
-                    passHref
-                  >
-                    Quick Survey
-                  </Link>
-                ) : (
-                  ""
-                )}
-
-                <Link
-                  className="bg-white hover:shadow-blue-400 shadow-md hover:bg-gray-100 text-black border-2 transition-all duration-300 leading-none flex items-center justify-center py-3 md:py-2 2xl:text-2xl md:text-xl  px-5 md:px-6 text-md rounded-md"
-                  href={"/calculator"}
-                  passHref
-                >
-                  Calculate
-                </Link>
-              </>
-            )}
+                  {!loading && !user?.id ? (
+                    <Link
+                      href={"/signup"}
+                      className={clsx(
+                        "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
+                        "text-md px-6 py-2"
+                      )}
+                    >
+                      Signup
+                    </Link>
+                  ) : (
+                    // <Link
+                    //   href={"/contact"}
+                    //   className={clsx(
+                    //     "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
+                    //     "text-md px-6 py-2"
+                    //   )}
+                    // >
+                    //   Contact
+                    // </Link>
+                    ""
+                  )}
+                </>
+              }
+            </div>
+          </MediaQuery>
+        </div>
+        <div className="relative min-h-[300px] md:min-h-0  flex justify-center items-center w-[100%] md:w-[58%] 2xl:scale-110">
+          <div className="absolute overflow-hidden max-w-[350px] md:max-w-none w-full md:mt-[8%] md:right-[-10%] z-0">
+            <Image
+              src={"/images/hero-mockup-7.png"}
+              alt={"live hero mockup"}
+              width={800}
+              height={100}
+              className="relative z-10 scale-110 md:scale-100"
+              draggable={"false"}
+            ></Image>
           </div>
         </div>
       </div>

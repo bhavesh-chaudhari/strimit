@@ -28,12 +28,16 @@ const StreamerForm = () => {
   return (
     <>
       <Head>
-        <title>Streamer's Form - LIVE</title>
+        <title>Streamer's Form - Strimit</title>
+        <meta
+          property="og:image"
+          content="https://strimit.in/api/og?title=Streamr's%20Form&path=www.strimit.in/streamer"
+        ></meta>
       </Head>
       <div>
         {loading && (
-          <div className="justify-center flex items-center min-h-[calc(100vh-105px)]">
-            <FadeLoader color="white" width={5} height={30}></FadeLoader>
+          <div className="justify-center bg-red-300 flex items-center min-h-[calc(0px)]">
+            <FadeLoader color="#d946ef" width={5} height={30}></FadeLoader>
           </div>
         )}
       </div>

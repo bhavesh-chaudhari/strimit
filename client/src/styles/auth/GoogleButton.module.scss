@@ -11,10 +11,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;
-  color: black;
+  background: black;
+  color: white;
   .icon {
     margin-right: 10px;
     display: flex;
+    background: white;
+    border-radius: 50%;
   }
 }

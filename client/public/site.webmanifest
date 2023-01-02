@@ -1,7 +1,7 @@
 {
-    "name": "Live",
-    "short_name": "Live",
-    "description": "Advertising for streamers",
+    "name": "Strimit",
+    "short_name": "Strimit",
+    "description": "Monetizing Live Streams",
     "start_url": "/",
     "lang": "en-US",
     "theme_color": "#000000",

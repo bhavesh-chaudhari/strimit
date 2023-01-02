@@ -17,7 +17,7 @@ dotenv.config();
 // configure cors
 app.use(
   cors({
-    origin: process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://www.liveads.stream",
+    origin: process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://www.strimit.in",
     credentials: true,
   })
 );

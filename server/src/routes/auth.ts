@@ -23,7 +23,7 @@ router.get("/protected", ensureAuth, (req, res)=>{
 // @access  Public
 router.post("/google", authController.googleLogin)
 
-router.post("/google", authController.refreshToken);
+// router.post("/google", authController.refreshToken);
 
 router.get("/checkAuth", ensureAuth, authController.checkAuth);
 
