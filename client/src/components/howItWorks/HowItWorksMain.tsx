@@ -54,7 +54,7 @@ const HowItWorksMain = ({imageData}: any) => {
                           your earnings by displaying
                         </span>{" "}
                         <span className="translate-x-0 md:flex">
-                          video/banner ads of onto your streams
+                          video/banner ads onto your streams
                         </span>
                         <span className="translate-x-0 md:flex">
                           taking into account that your audience
@@ -98,7 +98,7 @@ const HowItWorksMain = ({imageData}: any) => {
                 <div>
                   <div className="relative before:from-fuchsia-400 before:to-orange-600">
                     <h2 className="text-3xl lg:text-5xl font-medium">
-                      Are You An Advertiser?
+                      Are You A Brand?
                     </h2>
                   </div>
                   <div className={`flex flex-col`}>
