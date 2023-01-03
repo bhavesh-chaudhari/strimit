@@ -52,13 +52,18 @@ const Navbar = (): JSX.Element => {
     },
     {
       id: 2,
-      path: "/about",
-      name: "About",
+      path: "/offers",
+      name: "Studio",
     },
     {
       id: 3,
-      path: "/offers",
-      name: "Pre book Studio",
+      path: "/book-a-demo",
+      name: "Book a Demo",
+    },
+    {
+      id: 4,
+      path: "/about",
+      name: "About",
     },
     // {
     //   id: 3,
@@ -66,7 +71,7 @@ const Navbar = (): JSX.Element => {
     //   name: "Calculator",
     // },
     {
-      id: 4,
+      id: 5,
       path: user?.id ? "" : "/signup",
       name: user?.id ? "Logout" : "Sign Up",
     },

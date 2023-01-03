@@ -34,7 +34,7 @@ app.use(limiter);
 
 // Routes
 app.get("/", (req, res) => {
-  res.status(StatusCodes.OK).json({ status: "ok works" }); // test route
+  res.status(StatusCodes.OK).json({ status: "running" }); // test route
 });
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes)

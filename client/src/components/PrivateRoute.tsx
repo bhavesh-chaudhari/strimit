@@ -46,7 +46,7 @@ const PrivateRoute = ({ protectedRoutes, hiddenRoutes, children }: Props) => {
 
   if ((isLoading || !isAuthenticated) && pathIsProtected) {
     return (
-      <div className="min-h-screen w-full absolute left-0 top-0 bg-black"></div>
+      <div className="min-h-screen w-full absolute left-0 top-0 bg-white"></div>
     );
   }
 
