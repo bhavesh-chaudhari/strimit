@@ -5,8 +5,10 @@ import path from "path";
 import cors from "cors";
 import authRoutes from "./routes/auth";
 import userRoutes from "./routes/users";
+import collectRoutes from "./routes/collect"
 import { StatusCodes } from "http-status-codes";
 import rateLimit from "express-rate-limit";
+import { ensureAuth } from "./middlewares/auth";
 
 const app: Application = express();
 app.use(express.json());
@@ -34,10 +36,11 @@ app.use(limiter);
 
 // Routes
 app.get("/", (req, res) => {
-  res.status(StatusCodes.OK).json({ status: "ok works" }); // test route
+  res.status(StatusCodes.OK).json({ status: "running" }); // test route
 });
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/users", userRoutes)
+app.use("/api/v1/users", ensureAuth, userRoutes);
+app.use("/api/v1/collect", ensureAuth, collectRoutes);
 
 // read PORT from environment 
 const PORT = process.env.PORT || 5000;

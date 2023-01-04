@@ -33,7 +33,7 @@ const Home: NextPage = (props) => {
         ></meta>
         <meta
           property="og:image"
-          content="https://drive.google.com/uc?id=1_yNQLtKiqwuCN01njFPiaKdfygD2ViTm"
+          content="https://drive.google.com/uc?id=1eVa6aHL97bkDzv5tQqqy5efknFFboNWx"
         ></meta>
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.strimit.in/" />
@@ -44,7 +44,7 @@ const Home: NextPage = (props) => {
         />
         <meta
           property="twitter:image"
-          content="https://drive.google.com/uc?id=1_yNQLtKiqwuCN01njFPiaKdfygD2ViTm"
+          content="https://drive.google.com/uc?id=1eVa6aHL97bkDzv5tQqqy5efknFFboNWx"
         ></meta>
       </Head>
       <Hero imageData={thumbnails[0]} ></Hero>

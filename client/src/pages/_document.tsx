@@ -36,6 +36,21 @@ const document = () => {
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
+        <Script
+          strategy="lazyOnload"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+        />
+
+        <Script id="strimit-google-script-tag" strategy="lazyOnload">
+          {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+                    page_path: window.location.pathname,
+                    });
+                `}
+        </Script>
       </Head>
       <body>
         <Main />

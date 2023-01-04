@@ -111,7 +111,7 @@ export const useSignup = () => {
           router.replace("/streamer");
         }
         if (data.data.role === "advertiser") {
-          router.replace("/contact");
+          router.replace("/advertiser");
         }
         toast("Signed Up Successfully", {
           type: "success",

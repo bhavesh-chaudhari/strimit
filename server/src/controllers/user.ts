@@ -12,7 +12,7 @@ export const getUser = async (req: Request, res: Response) => {
       },
     });
 
-    const { password, updatedAt, ...modifiedUser } = user!;
+    const { password, updatedAt, createdAt, ...modifiedUser } = user!;
 
     res.status(StatusCodes.OK).json({ ...modifiedUser });
   } catch (error) {
@@ -29,7 +29,7 @@ export const updateUser = async (req: Request, res: Response) => {
       },
     });
 
-    const {password, updatedAt, ...userWithoutPassword} = user
+    const { password, updatedAt, ...userWithoutPassword } = user;
 
     res.status(StatusCodes.OK).json({ ...userWithoutPassword });
   } catch (error) {

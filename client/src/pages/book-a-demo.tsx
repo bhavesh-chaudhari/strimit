@@ -42,7 +42,7 @@ const calendar = () => {
         </div>
         <div
           className="calendly-inline-widget min-w-[320px] w-full"
-          data-url="https://calendly.com/live-ads/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=000000&text_color=ffffff"
+          data-url="https://calendly.com/team-strimit/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=000000&text_color=ffffff"
           style={{ minWidth: "320px", height: "600px" }}
         ></div>
       </div>
