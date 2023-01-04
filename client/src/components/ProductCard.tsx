@@ -102,7 +102,7 @@ const ProductCard = (props: ProductCardProps) => {
               </Link>
             )}
             <p className="text-sm text-gray-500">
-              No Contracts {"•"} Cancel Anytime
+              No Contracts {"•"} Money-back guarantee
             </p>
           </div>
         </div>
