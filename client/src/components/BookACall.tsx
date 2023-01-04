@@ -20,9 +20,9 @@ const BookACall = () => {
       rel="noreferrer"
       className="fixed group  bottom-4 md:bottom-6 md:right-6 group right-4 flex z-50 items-center justify-center gap-2"
     >
-      <span className="text-green-500 hidden sm:flex font-semibold shadow-[0px_0px_10px_0px_white] py-1 bg-green-100 px-2 rounded-sm relative after:absolute after:h-0 after:w-0 after:border-transparent after:right-0 after:top-1/2 after:translate-x-[85%] after:-translate-y-1/2 after:border-l-8 after:border-l-green-100 after:border-t-8 after:border-b-8">
-        +91-8080915513
-      </span>
+      {/*<span className="text-green-500 hidden sm:flex font-semibold shadow-[0px_0px_10px_0px_white] py-1 bg-green-100 px-2 rounded-sm relative after:absolute after:h-0 after:w-0 after:border-transparent after:right-0 after:top-1/2 after:translate-x-[85%] after:-translate-y-1/2 after:border-l-8 after:border-l-green-100 after:border-t-8 after:border-b-8">*/}
+      {/*  +91-8080915513*/}
+      {/*</span>*/}
       <span className="bg-green-500 group-hover:scale-110 duration-200 group-hover:shadow-[0px_0px_10px_0px_rgba(0,255,0,1)] text-white w-10 h-10 flex items-center justify-center rounded-full">
         {/* <FaCalendarAlt size={21}></FaCalendarAlt> */}
         <IoLogoWhatsapp size={21}></IoLogoWhatsapp>
