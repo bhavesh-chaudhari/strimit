@@ -1,11 +1,18 @@
-import React from 'react'
-import Head from 'next/head';
-import { useUserTokenInfo } from '../hooks/useUser';
+import React, { useEffect } from "react";
+import Head from "next/head";
+import { useUserTokenInfo } from "../hooks/useUser";
+import { useTrackContactVisit } from "../hooks/useCollect";
 
 const contact = () => {
+  const { id } = useUserTokenInfo();
+  const { mutate } = useTrackContactVisit();
 
-  const {id} = useUserTokenInfo()
-  
+  useEffect(() => {
+    if (id) {
+      mutate();
+    }
+  }, [id]);
+
   return (
     <>
       <Head>
@@ -35,6 +42,6 @@ const contact = () => {
       </div>
     </>
   );
-}
+};
 
-export default contact
+export default contact;

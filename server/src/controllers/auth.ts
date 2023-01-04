@@ -34,7 +34,7 @@ export const signup = async (req: Request, res: Response) => {
       data: { ...req.body, password: hashedPassword },
     });
 
-    const { password, ...userWithoutPassword } = newUser;
+    const { password, createdAt, updatedAt, ...userWithoutPassword } = newUser;
 
     const token = jwt.sign(
       { id: newUser.id, email: newUser.email, role: userWithoutPassword.role },
@@ -91,7 +91,9 @@ export const login = async (req: Request, res: Response) => {
     const key = "password";
     delete (user as any)[key];
 
-    res.status(200).json({ ...user, token });
+    const {createdAt, updatedAt, ...userToSend} = user
+
+    res.status(200).json({ ...userToSend, token });
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
   }

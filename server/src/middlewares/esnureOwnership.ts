@@ -19,7 +19,9 @@ export const ensureOwnership = (
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
 
-    const { id, role } = decoded as any;
+    const { id, role, email } = decoded as any;
+
+    console.log(id, role, email)
 
     if (Number(id) === Number(req.params.id) || role === "admin") {
       return next();

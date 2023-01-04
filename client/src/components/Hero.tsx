@@ -99,17 +99,26 @@ const Hero = ({imageData}: any): JSX.Element => {
                     >
                       Signup
                     </Link>
+                  ) : data?.role === "streamer" ? (
+                    <Link
+                      href={"/streamer-form"}
+                      className={clsx(
+                        "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
+                        "text-md px-6 py-2"
+                      )}
+                    >
+                      Survey
+                    </Link>
                   ) : (
-                    // <Link
-                    //   href={"/contact"}
-                    //   className={clsx(
-                    //     "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
-                    //     "text-md px-6 py-2"
-                    //   )}
-                    // >
-                    //   Contact
-                    // </Link>
-                    ""
+                    <Link
+                      href={"/advertiser-form"}
+                      className={clsx(
+                        "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
+                        "text-md px-6 py-2"
+                      )}
+                    >
+                      Survey
+                    </Link>
                   )}
                 </>
               }
@@ -117,14 +126,13 @@ const Hero = ({imageData}: any): JSX.Element => {
           </MediaQuery>
           <MediaQuery maxWidth={767}>
             <div
-              data-aos="fade-down"
+              data-aos="zoom-in"
               data-aos-duration="700"
               className="mb-10 flex justify-center md:block"
             >
               <Strimit className="w-[90%] max-w-[300px] md:max-w-none md:w-[250px] lg:w-[300px] xl:w-[400px] 2xl:w-[23vw]"></Strimit>
             </div>
             <div
-              data-aos="fade-down"
               data-aos-duration="900"
               className="mb-6 md:mb-8 xl:mb-12"
             >
@@ -158,17 +166,26 @@ const Hero = ({imageData}: any): JSX.Element => {
                     >
                       Signup
                     </Link>
+                  ) : data?.role === "streamer" ? (
+                    <Link
+                      href={"/streamer-form"}
+                      className={clsx(
+                        "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
+                        "text-md px-6 py-2"
+                      )}
+                    >
+                      Survey
+                    </Link>
                   ) : (
-                    // <Link
-                    //   href={"/contact"}
-                    //   className={clsx(
-                    //     "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
-                    //     "text-md px-6 py-2"
-                    //   )}
-                    // >
-                    //   Contact
-                    // </Link>
-                    ""
+                    <Link
+                      href={"/advertiser-form"}
+                      className={clsx(
+                        "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
+                        "text-md px-6 py-2"
+                      )}
+                    >
+                      Survey
+                    </Link>
                   )}
                 </>
               }

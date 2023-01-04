@@ -1,8 +1,9 @@
 .container {
   display: flex;
   justify-content: center;
-  min-height: calc(100vh - 105px);
+  min-height: calc(100vh - 140px);
   // padding: 2.5rem 0;
+  padding-bottom: 2.5rem;
   transform: translate(0, 4%);
   position: relative;
   z-index: 1;
