@@ -10,7 +10,7 @@ const AboutMain = () => {
           We want to make live-streaming the go-to industry standard for content
           creators.
           <br />
-          The best way to achieve that is what we do at STRIMIT.
+          The best way to achieve that is what we do at <span className="font-semibold">STRIMIT</span>.
           <br />
           We help streamers earn money from their live streams.
           <br />

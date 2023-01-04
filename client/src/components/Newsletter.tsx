@@ -37,7 +37,7 @@ const Newsletter = () => {
             <AiOutlineMail size={24}></AiOutlineMail>
           </span>
           <p className="mt-4">
-            Keep up with our latest news and events. Subscribe to our newletter.
+            Keep up with our latest product updates. Subscribe to our newsletter.
           </p>
           <form
             className="mt-4 flex flex-col md:flex-row gap-3 md:gap-2"
