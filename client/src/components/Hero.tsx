@@ -60,20 +60,37 @@ const Hero = ({imageData}: any): JSX.Element => {
   }, [data]);
 
   return (
-    <div className="min-h-[calc(100vh-100px)] pt-[100px] md:pt-0 md:min-h-0  md:mt-[15%] md:mb-10 lg:mt-0 lg:mb-0 lg:min-h-[calc(100vh-100px)] relative flex flex-col justify-center items-center">
+    <div
+      className={clsx(
+        "pt-[100px] mb-16 md:py-20 lg:py-0 md:min-h-0 md:mb-10 lg:mt-0 lg:mb-0 relative flex flex-col justify-center items-center",
+        !loading && user?.id && "lg:min-h-[calc(100vh-100px)]",
+        !loading && !user?.id && "lg:min-h-[0]"
+      )}
+    >
       <div className="absolute w-[280px] h-[60px] bg-gradient-to-r from-yellow-200 to-fuchsia-400 -top-28 md:hidden"></div>
       <div
         className={clsx(
-          "flex flex-col-reverse justify-start items-start md:flex-row relative md:justify-between md:items-center w-[90%] md:w-[90%] xl:w-[80%] 2xl:w-[100%] -translate-y-[18%]",
-          "pt-[15vh] md:pt-0"
+          "flex justify-start items-start relative lg:justify-between md:items-center w-[90%] lg:w-[90%] xl:w-[80%] 2xl:w-[100%]",
+          "lg:pt-0",
+          !loading && !user?.id && "flex-col pt-[8vh] lg:flex-row",
+          !loading &&
+            user?.id &&
+            "flex-col-reverse pt-[3vh] md:flex-row lg:-translate-y-[18%]"
         )}
       >
-        <div className="md:translate-y-[5%] text-center md:text-left flex flex-col justify-center w-full md:w-max">
+        <div
+          className={clsx(
+            "text-center lg:text-left flex flex-col justify-center w-full md:w-max",
+            !loading && !user?.id && "md:-translate-y-[10%]",
+            !loading && user?.id && "md:translate-y-[5%]"
+          )}
+        >
           <MediaQuery minWidth={768}>
             <div
               data-aos="fade-up"
               data-aos-duration="700"
-              className="mb-10 flex justify-center md:block"
+              data-aos-offset={-500}
+              className="mb-10 flex justify-center lg:block"
             >
               <Strimit className="w-[90%] max-w-[300px] md:max-w-none md:w-[250px] lg:w-[300px] xl:w-[400px] 2xl:w-[23vw]"></Strimit>
             </div>
@@ -217,9 +234,11 @@ const Hero = ({imageData}: any): JSX.Element => {
               ></Image>
             </div>
           ) : (
-            <div className="w-full flex justify-end items-center rounded-b-3xl xl:mt-[140px] 2xl:mt-[170px]">
-              <div className="py-12 flex flex-col justify-center items-center w-full max-w-[550px]">
-                <h2 className="text-2xl text-fuchsia-500 font-bold text-center mb-4" >Signup Now</h2>
+            <div className="w-full flex justify-center md:justify-end items-center rounded-b-3xl mt-12 md:mt-0">
+              <div className="md:py-12 flex flex-col justify-center items-center w-full max-w-[550px]">
+                <h2 className="text-2xl text-fuchsia-500 font-bold text-center mb-4">
+                  Signup Now
+                </h2>
                 <AuthForm
                   setFormValues={setFormValues}
                   formValues={formValues}
