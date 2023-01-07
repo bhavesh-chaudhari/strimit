@@ -16,11 +16,25 @@ const MediaQuery = dynamic(()=>{
   ssr: false
 })
 
+const initialFormValues = {
+  email: "",
+  password: "",
+  role: "",
+};
+
+export interface FormValues {
+  email: string;
+  password: string;
+  role?: string;
+}
+
 const Hero = ({imageData}: any): JSX.Element => {
 
   const containerRef = useRef<any>(null);
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+
+  const [formValues, setFormValues] = useState<FormValues>(initialFormValues);
 
   const { data } = useCurrentUser();
 
@@ -46,20 +60,37 @@ const Hero = ({imageData}: any): JSX.Element => {
   }, [data]);
 
   return (
-    <div className="min-h-[calc(100vh-100px)] pt-[100px] md:pt-0 md:min-h-0  md:mt-[15%] md:mb-10 lg:mt-0 lg:mb-0 lg:min-h-[calc(100vh-100px)] relative flex flex-col justify-center items-center">
+    <div
+      className={clsx(
+        "pt-[100px] mb-16 md:py-20 lg:py-0 md:min-h-0 md:mb-10 lg:mt-0 lg:mb-0 relative flex flex-col justify-center items-center",
+        !loading && user?.id && "lg:min-h-[calc(100vh-100px)]",
+        !loading && !user?.id && "lg:min-h-[0]"
+      )}
+    >
       <div className="absolute w-[280px] h-[60px] bg-gradient-to-r from-yellow-200 to-fuchsia-400 -top-28 md:hidden"></div>
       <div
         className={clsx(
-          "flex flex-col-reverse justify-start items-start md:flex-row relative md:justify-between md:items-center w-[90%] md:w-[90%] xl:w-[80%] 2xl:w-[100%] -translate-y-[18%]",
-          "pt-[15vh] md:pt-0"
+          "flex justify-start items-start relative lg:justify-between md:items-center w-[90%] lg:w-[90%] xl:w-[80%] 2xl:w-[100%]",
+          "lg:pt-0",
+          !loading && !user?.id && "flex-col pt-[8vh] lg:flex-row",
+          !loading &&
+            user?.id &&
+            "flex-col-reverse pt-[3vh] md:flex-row lg:-translate-y-[18%]"
         )}
       >
-        <div className="md:translate-y-[5%] text-center md:text-left flex flex-col justify-center w-full md:w-max">
+        <div
+          className={clsx(
+            "text-center lg:text-left flex flex-col justify-center w-full md:w-max",
+            !loading && !user?.id && "md:-translate-y-[10%]",
+            !loading && user?.id && "md:translate-y-[5%]"
+          )}
+        >
           <MediaQuery minWidth={768}>
             <div
               data-aos="fade-up"
               data-aos-duration="700"
-              className="mb-10 flex justify-center md:block"
+              data-aos-offset={-500}
+              className="mb-10 flex justify-center lg:block"
             >
               <Strimit className="w-[90%] max-w-[300px] md:max-w-none md:w-[250px] lg:w-[300px] xl:w-[400px] 2xl:w-[23vw]"></Strimit>
             </div>
@@ -75,6 +106,7 @@ const Hero = ({imageData}: any): JSX.Element => {
             <div
               data-aos="fade-up"
               data-aos-duration="1100"
+              data-aos-offset={-200}
               className="flex gap-4 w-full justify-center md:w-max"
             >
               {
@@ -101,7 +133,7 @@ const Hero = ({imageData}: any): JSX.Element => {
                     </Link>
                   ) : data?.role === "streamer" ? (
                     <Link
-                      href={"/streamer-form"}
+                      href={"/streamer"}
                       className={clsx(
                         "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
                         "text-md px-6 py-2"
@@ -111,7 +143,7 @@ const Hero = ({imageData}: any): JSX.Element => {
                     </Link>
                   ) : (
                     <Link
-                      href={"/advertiser-form"}
+                      href={"/advertiser"}
                       className={clsx(
                         "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
                         "text-md px-6 py-2"
@@ -132,10 +164,7 @@ const Hero = ({imageData}: any): JSX.Element => {
             >
               <Strimit className="w-[90%] max-w-[300px] md:max-w-none md:w-[250px] lg:w-[300px] xl:w-[400px] 2xl:w-[23vw]"></Strimit>
             </div>
-            <div
-              data-aos-duration="900"
-              className="mb-6 md:mb-8 xl:mb-12"
-            >
+            <div data-aos-duration="900" className="mb-6 md:mb-8 xl:mb-12">
               <h1 className="text-2xl md:text-3xl xl:text-6xl font-inter font-bold text-gray-800">
                 Monetize Live <br className="hidden sm:flex" /> Streams
               </h1>
@@ -168,7 +197,7 @@ const Hero = ({imageData}: any): JSX.Element => {
                     </Link>
                   ) : data?.role === "streamer" ? (
                     <Link
-                      href={"/streamer-form"}
+                      href={"/streamer"}
                       className={clsx(
                         "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
                         "text-md px-6 py-2"
@@ -178,7 +207,7 @@ const Hero = ({imageData}: any): JSX.Element => {
                     </Link>
                   ) : (
                     <Link
-                      href={"/advertiser-form"}
+                      href={"/advertiser"}
                       className={clsx(
                         "bg-fuchsia-600 hover:bg-fuchsia-500 transition-all text-white xl:p-2 shadow-md shadow-fuchsia-300 rounded-full xl:px-16 text-2xl",
                         "text-md px-6 py-2"
@@ -193,16 +222,31 @@ const Hero = ({imageData}: any): JSX.Element => {
           </MediaQuery>
         </div>
         <div className="relative min-h-[300px] md:min-h-0  flex justify-center items-center w-[100%] md:w-[58%] 2xl:scale-110">
-          <div className="absolute overflow-hidden max-w-[350px] md:max-w-none w-full md:mt-[8%] md:right-[-10%] z-0">
-            <Image
-              src={"/images/hero-mockup-7.png"}
-              alt={"live hero mockup"}
-              width={800}
-              height={100}
-              className="relative z-10 scale-110 md:scale-100"
-              draggable={"false"}
-            ></Image>
-          </div>
+          {!loading && user?.id ? (
+            <div className="absolute overflow-hidden max-w-[350px] md:max-w-none w-full md:mt-[8%] md:right-[-10%] z-0">
+              <Image
+                src={"/images/hero-mockup-7.png"}
+                alt={"live hero mockup"}
+                width={800}
+                height={100}
+                className="relative z-10 scale-110 md:scale-100"
+                draggable={"false"}
+              ></Image>
+            </div>
+          ) : (
+            <div className="w-full flex justify-center md:justify-end items-center rounded-b-3xl mt-12 md:mt-0">
+              <div className="md:py-12 flex flex-col justify-center items-center w-full max-w-[550px]">
+                <h2 className="text-2xl text-fuchsia-500 font-bold text-center mb-4">
+                  Signup Now
+                </h2>
+                <AuthForm
+                  setFormValues={setFormValues}
+                  formValues={formValues}
+                  isSignUp={true}
+                ></AuthForm>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
