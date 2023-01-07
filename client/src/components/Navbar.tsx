@@ -105,7 +105,8 @@ const Navbar = (): JSX.Element => {
         <div className="mb-0 cursor-pointer w-[80px] md:w-[55px] h-[18px] relative flex -translate-x-3 md:transform-none items-center">
           <Link href="/">
             <div>
-              <Strimit width={100}></Strimit>
+              {/* <Strimit width={100}></Strimit> */}
+              <Image alt="strimit.in" width={48} height={48} src={"/logos/strimit-logo.png"} ></Image>
             </div>
           </Link>
         </div>

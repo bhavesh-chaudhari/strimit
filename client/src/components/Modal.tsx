@@ -24,9 +24,9 @@ const Modal = ({
         onClick={(e) => {
           e.stopPropagation();
         }}
-        className="z-0 flex-col border border-gray-500 relative w-11/12 max-w-lg flex justify-center items-center"
+        className="z-0 flex-col relative w-11/12 max-w-lg flex justify-center items-center"
       >
-        <div className="p-3 bg-black flex items-center justify-between w-full border-b rounded-t-md border-gray-700 px-8 font-semibold">
+        <div className="p-3 bg-white flex items-center justify-between w-full border-b rounded-t-md border-gray-700 px-8 font-semibold">
           <p className="opacity-90 w-full text-center text-lg font-semibold">
             How do you wish to continue?
           </p>

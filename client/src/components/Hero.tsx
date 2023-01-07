@@ -10,11 +10,14 @@ import { Strimit } from "./svgs";
 import clsx from "clsx";
 import dynamic from "next/dynamic";
 
-const MediaQuery = dynamic(()=>{
-  return import("react-responsive")
-}, {
-  ssr: false
-})
+const MediaQuery = dynamic(
+  () => {
+    return import("react-responsive");
+  },
+  {
+    ssr: false,
+  }
+);
 
 const initialFormValues = {
   email: "",
@@ -28,8 +31,7 @@ export interface FormValues {
   role?: string;
 }
 
-const Hero = ({imageData}: any): JSX.Element => {
-
+const Hero = ({ imageData }: any): JSX.Element => {
   const containerRef = useRef<any>(null);
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -62,7 +64,7 @@ const Hero = ({imageData}: any): JSX.Element => {
   return (
     <div
       className={clsx(
-        "pt-[100px] mb-16 md:py-20 lg:py-0 md:min-h-0 md:mb-10 lg:mt-0 lg:mb-0 relative flex flex-col justify-center items-center",
+        "pt-[100px] mb-16 md:py-20 lg:py-0 md:min-h-0 md:mb-10 lg:mt-0 lg:mb-0 relative flex flex-col justify-center items-center 2xl:py-20",
         !loading && user?.id && "lg:min-h-[calc(100vh-100px)]",
         !loading && !user?.id && "lg:min-h-[0]"
       )}
@@ -236,14 +238,20 @@ const Hero = ({imageData}: any): JSX.Element => {
           ) : (
             <div className="w-full flex justify-center md:justify-end items-center rounded-b-3xl mt-12 md:mt-0">
               <div className="md:py-12 flex flex-col justify-center items-center w-full max-w-[550px]">
-                <h2 className="text-2xl text-fuchsia-500 font-bold text-center mb-4">
-                  Signup Now
-                </h2>
-                <AuthForm
-                  setFormValues={setFormValues}
-                  formValues={formValues}
-                  isSignUp={true}
-                ></AuthForm>
+                {!loading ? (
+                  <>
+                    <h2 className="text-2xl text-fuchsia-500 font-bold text-center mb-4">
+                      Signup Now
+                    </h2>
+                    <AuthForm
+                      setFormValues={setFormValues}
+                      formValues={formValues}
+                      isSignUp={true}
+                    ></AuthForm>
+                  </>
+                ) : (
+                  <div className="min-h-[550px] md:min-h-[600px]"></div>
+                )}
               </div>
             </div>
           )}
