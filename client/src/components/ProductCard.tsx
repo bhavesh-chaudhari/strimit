@@ -74,7 +74,7 @@ const ProductCard = (props: ProductCardProps) => {
           </div>
         </div>
         <div className="flex flex-col justify-center items-center w-full md:w-[40%] px-5 py-3 md:p-4 relative">
-          <div className="w-full flex justify-center items-center relative border shadow-sm shadow-fuchsia-200 rounded-xl overflow-hidden border-gray-50">
+          <div className="w-full xl:min-h-[250px] flex justify-center items-center relative border shadow-sm shadow-fuchsia-200 rounded-xl overflow-hidden border-gray-50">
             <Image
               src={imgPath}
               alt={`${title}`}

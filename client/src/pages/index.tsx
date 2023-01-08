@@ -15,7 +15,7 @@ const Home: NextPage = (props) => {
         <title>Strimit - Monetize Live Streams.</title>
         <meta
           name="description"
-          content="Monetize Live Streams and get total control over your ads with an ability to stream on multiple platforms with ease."
+          content="Monetize Live Streams and get total control over your ads with an ability to stream on multiple platforms with ease irrespective of audience size."
         />
         <meta
           name="keywords"
@@ -29,7 +29,7 @@ const Home: NextPage = (props) => {
         <meta property="og:title" content="Strimit" />
         <meta
           property="og:description"
-          content="Monetize Live Streams and get total control over your ads with an ability to stream on multiple platforms with ease."
+          content="Monetize Live Streams and get total control over your ads with an ability to stream on multiple platforms with ease irrespective of audience size."
         ></meta>
         <meta
           property="og:image"
@@ -40,7 +40,7 @@ const Home: NextPage = (props) => {
         <meta property="twitter:title" content="Strimit" />
         <meta
           property="twitter:description"
-          content="Monetize Live Streams and get total control over your ads with an ability to stream on multiple platforms with ease."
+          content="Monetize Live Streams and get total control over your ads with an ability to stream on multiple platforms with ease irrespective of audience size."
         />
         <meta
           property="twitter:image"

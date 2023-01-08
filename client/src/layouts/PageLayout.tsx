@@ -64,24 +64,24 @@ const PageLayout = ({ children }: Props): JSX.Element => {
         {" "}
         {isModalOpen && (
           <Modal setIsModalOpen={setIsModalOpen} isModalOpen={isModalOpen}>
-            <div className="bg-black w-full flex justify-center items-center min-h-[100px]">
+            <div className="bg-white w-full flex rounded-b-md overflow-hidden justify-center items-center min-h-[100px]">
               <div className="flex gap-6">
                 <span
                   onClick={() => setRole("advertiser")}
-                  className="bg-white text-black w-24 flex items-center justify-center py-2 cursor-pointer"
+                  className="bg-black rounded-md text-white w-24 flex items-center justify-center py-2 cursor-pointer"
                 >
                   {isLoading && role === "advertiser" ? (
-                    <PulseLoader size={8}></PulseLoader>
+                    <PulseLoader color="white" size={8}></PulseLoader>
                   ) : (
                     "Advertiser"
                   )}
                 </span>
                 <span
                   onClick={() => setRole("streamer")}
-                  className="bg-white text-black w-24 flex items-center justify-center py-2 cursor-pointer"
+                  className="bg-black rounded-md text-white w-24 flex items-center justify-center py-2 cursor-pointer"
                 >
                   {isLoading && role === "streamer" ? (
-                    <PulseLoader size={8}></PulseLoader>
+                    <PulseLoader color="white" size={8}></PulseLoader>
                   ) : (
                     "Streamer"
                   )}

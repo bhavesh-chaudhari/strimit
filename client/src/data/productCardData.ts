@@ -16,8 +16,8 @@ const productCardData = [
       "Choose your favourite campaign and place the ad on your screen",
     ],
     textAlignment: "left" as textAlignment,
-    imgPath: "/favicons/android-chrome-512x512.png",
-    width: 250,
+    imgPath: "/logos/strimit-logo.png",
+    width: 180,
   },
   {
     id: 2,
