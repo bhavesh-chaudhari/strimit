@@ -9,7 +9,7 @@ const productCardData = [
     title: "Total Control Over Your Ads",
     description:
       "You choose where we display the advertisements. Be it banners or videos. You get complete control over ad placement.",
-    subtitle: "With stirmit, you can...",
+    subtitle: "With strimit, you can...",
     points: [
       "Experience insanely smooth ad loading speeds, which means a whole lot more engagement",
       "Fully customizable, drag and drop ad placement that anyone can use regardless of computer skills",
@@ -24,7 +24,7 @@ const productCardData = [
     title: "Multiplatform Streaming-Multimonetization",
     description:
       "Doesn't matter where you stream, we support every streaming platform there is. Be it YouTube, Twitch, Facebook Live, Loco, etc.",
-    subtitle: "With stirmit, you can...",
+    subtitle: "With strimit, you can...",
     points: [
       "Stream on multiple platforms at the same time. No hassle, easy to use",
       "Monetize your stream via every platform, that means multiple viewers and multi-monetization of advertisements",
@@ -39,7 +39,7 @@ const productCardData = [
     title: "Automated Ads",
     description:
       "Pre-decide ad placement and leave the rest for us to do. Start a monetized stream in less than 2 minutes.",
-    subtitle: "With stirmit, you can...",
+    subtitle: "With strimit, you can...",
     points: [
       "Choose automatic advertisements where we will display ads at a pre-decided frequency",
       "You get to have full focus on your content and we manage the ads",
@@ -54,7 +54,7 @@ const productCardData = [
     title: "Automatic Payments and Dashboard",
     description:
       "Getting sponsors for your stream is great. On top of that, you also get automatic and timely payments plus dashboard to track your sponsored brands.",
-    subtitle: "With stirmit, you can...",
+    subtitle: "With strimit, you can...",
     points: [
       "Strengthen brand relationship and track your sponsor history in real time",
       "Track your earnings and brand engagement",

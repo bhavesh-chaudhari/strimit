@@ -13,12 +13,12 @@ const Banner = () => {
     }
     
   return (
-    <div className="bg-white fixed w-full  [@media(min-width:850px)]:relative z-50 border-b border-fuchsia-400 h-[40px] py-2 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 flex justify-center items-center">
+    <div className="bg-fuchsia-300 fixed w-full  [@media(min-width:850px)]:relative z-50 border-b border-fuchsia-400 h-[40px] py-2 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 flex justify-center items-center">
       <Link
         className="flex px-2 sm:px-6 items-center gap-1 sm:gap-2"
         href={"/offers"}
       >
-        <span className="font-bold text-center text-xs md:text-[16px] text-gray-700">
+        <span className="font-bold text-center text-xs md:text-[16px] text-black">
           STREAMERS! ONE TIME OFFER! PRE-BOOK NOW!
         </span>
         <span className="scale-75 sm:scale-100">
