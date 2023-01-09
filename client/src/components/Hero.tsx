@@ -102,7 +102,7 @@ const Hero = ({ imageData }: any): JSX.Element => {
               className="mb-6 md:mb-8 xl:mb-12"
             >
               <h1 className="text-2xl md:text-3xl xl:text-6xl font-inter font-bold text-gray-800">
-                Sponsor Live <br className="hidden sm:flex" /> Streams
+                Monetize Live <br className="hidden sm:flex" /> Streams
               </h1>
             </div>
             <div
