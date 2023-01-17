@@ -48,13 +48,13 @@ const HowItWorksMain = ({imageData}: any) => {
                     <div className="shadow-fuchsia-100 flex flex-col gap-6 md:gap-8 z-0 relative pt-6 md:pt-8">
                       <p className="text-2xl lg:text-3xl text-gray-700 box-decoration-clone">
                         <span className="text-3xl lg:text-4xl text-fuchsia-600 font-bold">
-                          Increase
+                          10X
                         </span>{" "}
                         <span className="translate-x-0">
                           your earnings by displaying
                         </span>{" "}
                         <span className="translate-x-0 md:flex">
-                          video/banner ads onto your streams
+                          video/image ads onto your streams
                         </span>
                         <span className="translate-x-0 md:flex">
                           taking into account that your audience
@@ -105,7 +105,7 @@ const HowItWorksMain = ({imageData}: any) => {
                     <div className="shadow-fuchsia-100 flex flex-col gap-6 md:gap-8 z-0 relative pt-6 md:pt-8">
                       <p className="text-2xl lg:text-3xl text-gray-700 box-decoration-clone">
                         <span className="text-3xl lg:text-4xl text-fuchsia-600 font-bold">
-                          Grow
+                          10X
                         </span>{" "}
                         your business by reaching out to the already booming,
                         live-streaming industry audience.

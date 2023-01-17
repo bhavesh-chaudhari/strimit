@@ -17,6 +17,7 @@ import BookACall from "../components/BookACall";
 import Banner from "../components/Banner";
 import jwtDecode from "jwt-decode";
 import Socials from "../components/Socials";
+import BookADemoCalendly from "../components/BookADemoCalendly";
 
 interface Props {
   children?: React.ReactNode;
@@ -93,6 +94,7 @@ const PageLayout = ({ children }: Props): JSX.Element => {
         <Banner></Banner>
         <Navbar></Navbar>
         <BookACall></BookACall>
+        <BookADemoCalendly></BookADemoCalendly>
         <div className={styles["layout"]}>{children}</div>
         {/* {noFooterPages.includes(currentPagePath) ? null : <Footer></Footer>} */}
         <Socials></Socials>

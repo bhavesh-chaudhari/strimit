@@ -101,7 +101,7 @@ const Hero = ({ imageData }: any): JSX.Element => {
               data-aos-duration="900"
               className="mb-6 md:mb-8 xl:mb-12"
             >
-              <h1 className="text-2xl md:text-3xl xl:text-6xl font-inter font-bold text-gray-800">
+              <h1 className="text-2xl md:text-3xl xl:text-7xl font-inter font-bold text-gray-800">
                 Monetize Live <br className="hidden sm:flex" /> Streams
               </h1>
             </div>
@@ -167,7 +167,7 @@ const Hero = ({ imageData }: any): JSX.Element => {
               <Strimit className="w-[90%] max-w-[300px] md:max-w-none md:w-[250px] lg:w-[300px] xl:w-[400px] 2xl:w-[23vw]"></Strimit>
             </div>
             <div data-aos-duration="900" className="mb-6 md:mb-8 xl:mb-12">
-              <h1 className="text-2xl md:text-3xl xl:text-6xl font-inter font-bold text-gray-800">
+              <h1 className="text-2xl md:text-3xl xl:text-7xl font-inter font-bold text-gray-800">
                 Monetize Live <br className="hidden sm:flex" /> Streams
               </h1>
             </div>

@@ -47,34 +47,34 @@ const Navbar = (): JSX.Element => {
   const links = [
     {
       id: 1,
+      path: "/brandshome",
+      name: "You're a BRAND",
+    },
+      {
+      id: 2,
       path: "/",
       name: "Home",
     },
     {
-      id: 2,
-      path: "/offers",
-      name: "Studio",
-    },
-    {
       id: 3,
-      path: "/book-a-demo",
-      name: "Book a Demo",
+      path: "/offers",
+      name: "Streamer Studio",
     },
-    {
-      id: 4,
-      path: "/about",
-      name: "About",
-    },
+    // {
+    //   id: 4,
+    //   path: "/about",
+    //   name: "About",
+    // },
     // {
     //   id: 3,
     //   path: "/calculator",
     //   name: "Calculator",
     // },
     {
-      id: 5,
+      id: 4,
       path: user?.id ? "" : "/signup",
       name: user?.id ? "Logout" : "Sign Up",
-    },
+    }
   ];
 
   const logoutUser = () => {
