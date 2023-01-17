@@ -4,7 +4,6 @@ import Hero from '../components/Hero'
 import HowItWorksMain from '../components/howItWorks/HowItWorksMain'
 import { returnProps } from '../utils/imageMetadata'
 import path from "path"
-import {BrowserRouter, Route } from 'react-router-dom';
 
 const Home: NextPage = (props) => {
 
